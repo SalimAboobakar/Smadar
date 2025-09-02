@@ -72,7 +72,7 @@ const LandingPage = () => {
       title: "لوحة المدير",
       description: "إدارة شاملة للمنصة والبيانات والإحصائيات",
       icon: UserCog,
-      color: "from-red-500 to-pink-600",
+      color: "from-red-500 to-accent-600",
       features: [
         "إدارة المشاريع والبيانات",
         "مراقبة الإحصائيات",
@@ -128,7 +128,7 @@ const LandingPage = () => {
       title: "لوحة التحكم المحسنة",
       description: "تحليلات متقدمة وإحصائيات شاملة",
       icon: BarChart3,
-      color: "from-indigo-500 to-purple-600",
+      color: "from-accent-500 to-primary-600",
       features: [
         "تحليلات متقدمة",
         "رسوم بيانية تفاعلية",
@@ -339,7 +339,7 @@ const LandingPage = () => {
               },
             ].map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-full mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/20 rounded-full mb-4">
                   <feature.icon className="w-6 h-6 text-blue-400" />
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2">

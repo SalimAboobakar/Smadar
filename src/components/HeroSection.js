@@ -17,7 +17,7 @@ const HeroSection = () => {
   const words = ["الاستثمار", "الذكاء", "المجتمع", "الاستدامة"];
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-primary-900 to-slate-900">
       <BackgroundBeams className="absolute inset-0" />
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
@@ -41,7 +41,7 @@ const HeroSection = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
             <TextGenerateEffect
               words="منصة ذكاء استثماري بلمسة المجتمع"
-              className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-white via-primary-100 to-accent-200 bg-clip-text text-transparent"
             />
           </h1>
 

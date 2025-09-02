@@ -307,7 +307,7 @@ const MarketPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-light-200 to-pink-50 flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -318,9 +318,9 @@ const MarketPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-light-200 to-pink-50">
       {/* رأس الصفحة المذهل */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900">
+      <div className="relative overflow-hidden bg-gradient-to-r from-primary-900 via-primary-800 to-accent-900">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <motion.div
           initial={{ scale: 0 }}
@@ -332,7 +332,7 @@ const MarketPage = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
-          className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-10 blur-3xl"
+          className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-br from-accent-400 to-accent-400 rounded-full opacity-10 blur-3xl"
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
@@ -527,8 +527,8 @@ const MarketPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Background decoration */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-1/4 -right-32 w-64 h-64 bg-blue-500 rounded-full opacity-5 blur-3xl" />
-            <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-purple-500 rounded-full opacity-5 blur-3xl" />
+            <div className="absolute top-1/4 -right-32 w-64 h-64 bg-primary-500 rounded-full opacity-5 blur-3xl" />
+            <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-accent-500 rounded-full opacity-5 blur-3xl" />
           </div>
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -665,7 +665,7 @@ const MarketPage = () => {
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-br from-green-400 to-teal-400 rounded-full translate-x-14 -translate-y-14" />
-              <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full -translate-x-18 translate-y-18" />
+              <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-br from-accent-400 to-accent-400 rounded-full -translate-x-18 translate-y-18" />
             </div>
             <div className="relative mb-8">
               <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-2">

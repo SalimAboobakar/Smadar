@@ -201,7 +201,7 @@ const EnhancedDashboard = () => {
                       {formatNumber(stats?.totalVotes || 0)}
                     </p>
                   </div>
-                  <div className="p-3 bg-blue-100 rounded-full">
+                  <div className="p-3 bg-primary-100 rounded-full">
                     <Users className="w-6 h-6 text-primary-600" />
                   </div>
                 </div>
@@ -255,7 +255,7 @@ const EnhancedDashboard = () => {
                       {stats?.approvalRate || 0}%
                     </p>
                   </div>
-                  <div className="p-3 bg-purple-100 rounded-full">
+                  <div className="p-3 bg-light-300 rounded-full">
                     <CheckCircle className="w-6 h-6 text-accent-600" />
                   </div>
                 </div>
@@ -310,7 +310,7 @@ const EnhancedDashboard = () => {
                     className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
                   >
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                      <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mr-3">
                         <span className="text-sm font-bold text-primary-600">
                           {index + 1}
                         </span>
@@ -507,11 +507,11 @@ const EnhancedDashboard = () => {
               <h3 className="text-lg font-semibold mb-4">الرؤى والتنبؤات</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-4 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold text-blue-800 mb-2">
+                <div className="p-4 bg-primary-50 rounded-lg">
+                  <h4 className="font-semibold text-primary-800 mb-2">
                     اتجاهات النمو
                   </h4>
-                  <p className="text-sm text-blue-700">
+                  <p className="text-sm text-primary-700">
                     من المتوقع أن يشهد قطاع السياحة نمواً بنسبة 15% خلال الأشهر
                     القادمة، خاصة مع اقتراب موسم الخريف.
                   </p>
@@ -537,9 +537,9 @@ const EnhancedDashboard = () => {
                   </p>
                 </div>
 
-                <div className="p-4 bg-purple-50 rounded-lg">
-                  <h4 className="font-semibold text-purple-800 mb-2">توصيات</h4>
-                  <p className="text-sm text-purple-700">
+                <div className="p-4 bg-light-200 rounded-lg">
+                  <h4 className="font-semibold text-accent-800 mb-2">توصيات</h4>
+                  <p className="text-sm text-accent-700">
                     يُنصح بالتركيز على المشاريع المستدامة والابتكارية التي تخدم
                     المجتمع المحلي والسياح على حد سواء.
                   </p>

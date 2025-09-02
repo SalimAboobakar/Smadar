@@ -642,7 +642,7 @@ const InvestmentOpportunities = () => {
                       (opportunity, index) => (
                         <span
                           key={index}
-                          className="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs"
+                          className="px-2 py-1 bg-light-300 text-accent-800 rounded text-xs"
                         >
                           {opportunity}
                         </span>
@@ -693,8 +693,8 @@ const InvestmentOpportunities = () => {
                           {formatCurrency(calc.maxReturn)}
                         </div>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">
+                      <div className="bg-primary-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-primary-800 mb-2">
                           الإيرادات الشهرية المتوقعة
                         </h4>
                         <div className="text-lg font-bold text-primary-600">
@@ -710,8 +710,8 @@ const InvestmentOpportunities = () => {
                           {formatCurrency(calc.operatingCosts)}
                         </div>
                       </div>
-                      <div className="bg-purple-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-purple-800 mb-2">
+                      <div className="bg-light-200 p-4 rounded-lg">
+                        <h4 className="font-semibold text-accent-800 mb-2">
                           صافي الربح الشهري المتوقع
                         </h4>
                         <div className="text-lg font-bold text-accent-600">

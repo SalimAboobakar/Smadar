@@ -270,7 +270,7 @@ const AIInsights = () => {
       <div className="bg-white rounded-lg shadow-sm p-6">
         <div className="flex flex-wrap gap-4 items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-purple-100 rounded-lg">
+            <div className="p-2 bg-light-300 rounded-lg">
               <Brain className="w-6 h-6 text-accent-600" />
             </div>
             <div>
@@ -285,7 +285,7 @@ const AIInsights = () => {
             <select
               value={selectedTimeframe}
               onChange={(e) => setSelectedTimeframe(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent"
             >
               <option value="1month">شهر واحد</option>
               <option value="3months">3 أشهر</option>
@@ -296,7 +296,7 @@ const AIInsights = () => {
             <select
               value={selectedSector}
               onChange={(e) => setSelectedSector(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent"
             >
               <option value="all">جميع القطاعات</option>
               <option value="tourism">السياحة</option>
@@ -308,7 +308,7 @@ const AIInsights = () => {
 
             <button
               onClick={handleRefresh}
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+              className="px-4 py-2 bg-accent-600 text-white rounded-lg hover:bg-accent-700 transition-colors flex items-center gap-2"
             >
               <RefreshCw className="w-4 h-4" />
               تحديث
@@ -412,7 +412,7 @@ const AIInsights = () => {
                 {prediction.factors.map((factor, factorIndex) => (
                   <span
                     key={factorIndex}
-                    className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs"
+                    className="px-2 py-1 bg-primary-100 text-primary-800 rounded text-xs"
                   >
                     {factor}
                   </span>
@@ -505,8 +505,8 @@ const AIInsights = () => {
                 </span>
               </div>
               <p className="text-sm text-gray-600 mb-3">{risk.description}</p>
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <p className="text-sm text-blue-800">
+              <div className="p-3 bg-primary-50 rounded-lg">
+                <p className="text-sm text-primary-800">
                   <strong>استراتيجية التخفيف:</strong> {risk.mitigation}
                 </p>
               </div>
@@ -545,7 +545,7 @@ const AIInsights = () => {
               <div className="mt-3">
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="bg-purple-600 h-2 rounded-full"
+                    className="bg-accent-600 h-2 rounded-full"
                     style={{ width: `${factor.importance}%` }}
                   ></div>
                 </div>

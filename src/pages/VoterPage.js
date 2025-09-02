@@ -216,7 +216,7 @@ const VoterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-primary-900 to-slate-900">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -284,7 +284,7 @@ const VoterPage = () => {
               title: "متوسط الموافقة",
               value: `${overallStats.avgApproval}%`,
               icon: TrendingUp,
-              color: "purple",
+              color: "accent",
             },
             {
               title: "المشاريع النشطة",
@@ -378,7 +378,7 @@ const VoterPage = () => {
                         ? "bg-green-500/20 text-green-400"
                         : project.status === "قيد المراجعة"
                         ? "bg-yellow-500/20 text-yellow-400"
-                        : "bg-blue-500/20 text-blue-400"
+                        : "bg-primary-500/20 text-blue-400"
                     }`}
                   >
                     {project.status}
@@ -492,7 +492,7 @@ const VoterPage = () => {
                       whileTap={{ scale: 0.9 }}
                       className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                     >
-                      <MessageCircle className="w-5 h-5 text-purple-400" />
+                      <MessageCircle className="w-5 h-5 text-accent-400" />
                     </motion.button>
                   </div>
                   <motion.button

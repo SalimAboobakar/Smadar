@@ -154,7 +154,7 @@ const AdvancedAnalytics = () => {
                 {formatCurrency(analyticsData.kpis.totalInvestments)}
               </p>
             </div>
-            <div className="p-3 bg-blue-100 rounded-full">
+            <div className="p-3 bg-primary-100 rounded-full">
               <DollarSign className="w-6 h-6 text-primary-600" />
             </div>
           </div>
@@ -204,7 +204,7 @@ const AdvancedAnalytics = () => {
                 {analyticsData.kpis.averageROI}%
               </p>
             </div>
-            <div className="p-3 bg-purple-100 rounded-full">
+            <div className="p-3 bg-light-300 rounded-full">
               <Target className="w-6 h-6 text-accent-600" />
             </div>
           </div>
@@ -357,10 +357,10 @@ const AdvancedAnalytics = () => {
             ))}
           </div>
 
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+          <div className="mt-6 p-4 bg-primary-50 rounded-lg">
             <div className="flex items-center">
               <AlertTriangle className="w-5 h-5 text-primary-600 mr-2" />
-              <span className="text-sm font-medium text-blue-800">
+              <span className="text-sm font-medium text-primary-800">
                 توصية: التركيز على المشاريع منخفضة المخاطر لضمان الاستقرار
               </span>
             </div>

@@ -145,10 +145,10 @@ const AIChatbot = ({ isOpen, onClose }) => {
   };
 
   const getMessageColor = (role, metadata) => {
-    if (role === "user") return "bg-blue-500";
+    if (role === "user") return "bg-primary-500";
     if (metadata?.type === "analysis") return "bg-green-500";
     if (metadata?.type === "error") return "bg-red-500";
-    return "bg-purple-500";
+    return "bg-accent-500";
   };
 
   if (!isOpen) return null;
@@ -168,7 +168,7 @@ const AIChatbot = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-white/20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl flex items-center justify-center">
               <Bot className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -229,7 +229,7 @@ const AIChatbot = ({ isOpen, onClose }) => {
                   <div
                     className={`rounded-2xl px-4 py-3 ${
                       message.role === "user"
-                        ? "bg-blue-500 text-white"
+                        ? "bg-primary-500 text-white"
                         : "bg-white/10 text-white border border-white/20"
                     }`}
                   >
@@ -264,7 +264,7 @@ const AIChatbot = ({ isOpen, onClose }) => {
                 className="flex justify-start"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-accent-500 flex items-center justify-center">
                     <Bot className="w-4 h-4 text-white" />
                   </div>
                   <div className="bg-white/10 text-white border border-white/20 rounded-2xl px-4 py-3">
@@ -291,7 +291,7 @@ const AIChatbot = ({ isOpen, onClose }) => {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="اكتب فكرتك الاستثمارية أو سؤالك..."
-                className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 resize-none focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
                 rows={2}
                 disabled={isLoading}
               />
@@ -301,7 +301,7 @@ const AIChatbot = ({ isOpen, onClose }) => {
               whileTap={{ scale: 0.95 }}
               onClick={handleSendMessage}
               disabled={!inputMessage.trim() || isLoading}
-              className="p-3 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl text-white disabled:opacity-50 disabled:cursor-not-allowed hover:from-purple-600 hover:to-pink-700 transition-all"
+              className="p-3 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl text-white disabled:opacity-50 disabled:cursor-not-allowed hover:from-accent-600 hover:to-accent-700 transition-all"
             >
               {isLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

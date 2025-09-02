@@ -64,7 +64,7 @@ const MobileNavigation = () => {
       name: "لوحة التحكم المحسنة",
       icon: BarChart3,
       path: "/dashboard",
-      color: "text-indigo-600",
+      color: "text-primary-600",
     },
   ];
 
@@ -177,7 +177,7 @@ const MobileNavigation = () => {
                         onClick={() => handleNavigation(item.path)}
                         className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-right transition-colors ${
                           isActive(item.path)
-                            ? "bg-blue-50 text-blue-700 border-r-4 border-blue-600"
+                            ? "bg-primary-50 text-primary-700 border-r-4 border-blue-600"
                             : "text-gray-700 hover:bg-gray-100"
                         }`}
                       >

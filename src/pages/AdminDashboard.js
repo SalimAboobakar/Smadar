@@ -115,7 +115,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-primary-900 to-slate-900">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -210,7 +210,7 @@ const AdminDashboard = () => {
               title: "إجمالي الأصوات",
               value: stats.totalVotes,
               icon: TrendingUp,
-              color: "purple",
+              color: "accent",
             },
             {
               title: "متوسط الموافقة",
@@ -366,7 +366,7 @@ const AdminDashboard = () => {
                                 ? "bg-green-500/20 text-green-400"
                                 : project.status === "قيد المراجعة"
                                 ? "bg-yellow-500/20 text-yellow-400"
-                                : "bg-blue-500/20 text-blue-400"
+                                : "bg-primary-500/20 text-blue-400"
                             }`}
                           >
                             {project.status}
@@ -383,7 +383,7 @@ const AdminDashboard = () => {
                             <motion.button
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
-                              className="p-2 bg-blue-500/20 rounded-lg hover:bg-blue-500/30 transition-colors"
+                              className="p-2 bg-primary-500/20 rounded-lg hover:bg-primary-500/30 transition-colors"
                             >
                               <Eye className="w-4 h-4 text-blue-400" />
                             </motion.button>
@@ -426,7 +426,7 @@ const AdminDashboard = () => {
           {activeTab === "reports" && (
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                <FileText className="w-6 h-6 text-purple-400" />
+                <FileText className="w-6 h-6 text-accent-400" />
                 التقارير والإحصائيات
               </h3>
               <p className="text-white/70">

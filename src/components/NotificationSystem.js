@@ -138,9 +138,9 @@ const NotificationSystem = () => {
       case "warning":
         return "text-yellow-600 bg-yellow-100";
       case "info":
-        return "text-primary-600 bg-blue-100";
+        return "text-primary-600 bg-primary-100";
       case "trend":
-        return "text-accent-600 bg-purple-100";
+        return "text-accent-600 bg-light-300";
       case "investment":
         return "text-orange-600 bg-orange-100";
       default:
@@ -196,7 +196,7 @@ const NotificationSystem = () => {
                   {unreadCount > 0 && (
                     <button
                       onClick={markAllAsRead}
-                      className="text-sm text-primary-600 hover:text-blue-800"
+                      className="text-sm text-primary-600 hover:text-primary-800"
                     >
                       تعيين الكل كمقروء
                     </button>
@@ -227,7 +227,7 @@ const NotificationSystem = () => {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
                       className={`p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer ${
-                        !notification.read ? "bg-blue-50" : ""
+                        !notification.read ? "bg-primary-50" : ""
                       }`}
                       onClick={() => markAsRead(notification.id)}
                     >
@@ -246,7 +246,7 @@ const NotificationSystem = () => {
                               {notification.title}
                             </h4>
                             {!notification.read && (
-                              <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                              <div className="w-2 h-2 bg-primary-500 rounded-full flex-shrink-0"></div>
                             )}
                           </div>
 
@@ -278,7 +278,7 @@ const NotificationSystem = () => {
             {/* تذييل الإشعارات */}
             {notifications.length > 0 && (
               <div className="p-4 border-t border-gray-200">
-                <button className="w-full text-center text-sm text-primary-600 hover:text-blue-800">
+                <button className="w-full text-center text-sm text-primary-600 hover:text-primary-800">
                   عرض جميع الإشعارات
                 </button>
               </div>
@@ -297,7 +297,7 @@ const NotificationSystem = () => {
             className="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg border border-gray-200 p-4 z-50 max-w-sm"
           >
             <div className="flex items-start gap-3">
-              <div className="p-2 bg-blue-100 rounded-full">
+              <div className="p-2 bg-primary-100 rounded-full">
                 <Bell className="w-4 h-4 text-primary-600" />
               </div>
               <div className="flex-1">

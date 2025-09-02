@@ -84,7 +84,7 @@ const GeminiIntegration = ({ projectData, results }) => {
   return (
     <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl flex items-center justify-center">
           <Brain className="w-5 h-5 text-white" />
         </div>
         <h3 className="text-xl font-semibold text-white">
@@ -108,7 +108,7 @@ const GeminiIntegration = ({ projectData, results }) => {
               disabled={isAnalyzing}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 activeTab === tab.id
-                  ? "bg-purple-500/30 text-purple-300 border border-purple-400"
+                  ? "bg-accent-500/30 text-light-400 border border-accent-400"
                   : "bg-white/10 text-white/70 hover:bg-white/20 border border-white/20"
               } ${isAnalyzing ? "opacity-50 cursor-not-allowed" : ""}`}
             >
@@ -131,7 +131,7 @@ const GeminiIntegration = ({ projectData, results }) => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full mx-auto mb-4"
+              className="w-12 h-12 border-4 border-accent-500/30 border-t-accent-500 rounded-full mx-auto mb-4"
             />
             <h4 className="text-lg font-semibold text-white mb-2">
               جاري التحليل الذكي...
@@ -188,7 +188,7 @@ const GeminiIntegration = ({ projectData, results }) => {
       {/* Instructions */}
       {!analysisResult && !isAnalyzing && (
         <div className="text-center py-8">
-          <Brain className="w-16 h-16 text-purple-400 mx-auto mb-4 opacity-50" />
+          <Brain className="w-16 h-16 text-accent-400 mx-auto mb-4 opacity-50" />
           <h4 className="text-lg font-semibold text-white mb-2">
             التحليل الذكي متاح
           </h4>

@@ -172,7 +172,7 @@ const AdvancedSearch = ({
           onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
           className={`absolute left-2 top-2 p-2 rounded-lg transition-all duration-300 ${
             isAdvancedOpen
-              ? "bg-blue-500 text-white"
+              ? "bg-primary-500 text-white"
               : "bg-white/10 text-gray-400 hover:text-white hover:bg-white/20"
           }`}
         >
@@ -345,7 +345,7 @@ const AdvancedSearch = ({
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsAdvancedOpen(false)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+                    className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
                   >
                     تطبيق
                   </motion.button>

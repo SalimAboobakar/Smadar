@@ -12,7 +12,7 @@ const ChatbotTrigger = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsChatbotOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-purple-500 to-pink-600 text-white p-4 rounded-full shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-accent-500 to-accent-600 text-white p-4 rounded-full shadow-2xl hover:shadow-accent-500/25 transition-all duration-300 group"
       >
         <div className="relative">
           <MessageCircle className="w-6 h-6" />

@@ -106,7 +106,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
             <Star className="w-6 h-6 text-yellow-500" />
             أفضل المشاريع أداءً
           </h3>
-          <button className="text-primary-600 hover:text-blue-800 font-medium flex items-center gap-2">
+          <button className="text-primary-600 hover:text-primary-800 font-medium flex items-center gap-2">
             عرض المزيد
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -316,26 +316,28 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
               </p>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg">
+            <div className="bg-primary-50 p-4 rounded-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-semibold text-blue-800">
+                <span className="font-semibold text-primary-800">
                   مستثمرون جدد
                 </span>
-                <span className="text-2xl font-bold text-primary-600">+320</span>
+                <span className="text-2xl font-bold text-primary-600">
+                  +320
+                </span>
               </div>
-              <p className="text-blue-700 text-sm">
+              <p className="text-primary-700 text-sm">
                 توقعات بانضمام مستثمرين جدد للسوق
               </p>
             </div>
 
-            <div className="bg-purple-50 p-4 rounded-lg">
+            <div className="bg-light-200 p-4 rounded-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="font-semibold text-purple-800">
+                <span className="font-semibold text-accent-800">
                   مشاريع جديدة
                 </span>
                 <span className="text-2xl font-bold text-accent-600">+25</span>
               </div>
-              <p className="text-purple-700 text-sm">
+              <p className="text-accent-700 text-sm">
                 مشاريع استثمارية جديدة في المراحل النهائية
               </p>
             </div>
@@ -348,7 +350,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.4 }}
-        className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl p-8 text-center text-white"
+        className="bg-gradient-to-r from-primary-600 via-accent-600 to-accent-500 rounded-xl p-8 text-center text-white"
       >
         <h3 className="text-3xl font-bold mb-4">
           ابدأ رحلتك الاستثمارية اليوم
