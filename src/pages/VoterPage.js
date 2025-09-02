@@ -330,7 +330,7 @@ const VoterPage = () => {
                 placeholder="البحث في المشاريع..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -338,7 +338,7 @@ const VoterPage = () => {
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               >
                 {projectTypes.map((type) => (
                   <option key={type} value={type}>
@@ -367,7 +367,7 @@ const VoterPage = () => {
               className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/20 hover:bg-white/15 transition-all duration-300"
             >
               {/* Project Image */}
-              <div className="h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 relative">
+              <div className="h-48 bg-gradient-to-br from-primary-500/20 to-accent-600/20 relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-6xl opacity-20">🏢</div>
                 </div>

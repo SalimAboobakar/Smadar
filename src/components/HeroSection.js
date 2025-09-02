@@ -32,7 +32,7 @@ const HeroSection = () => {
           className="mb-8"
         >
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-accent-500/20 px-6 py-3 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
-            <Sparkles className="w-5 h-5 text-blue-400" />
+            <Sparkles className="w-5 h-5 text-primary-400" />
             <span className="text-sm text-white/90 font-medium">
               منصة تدوم - مستقبل الاستثمار الذكي
             </span>
@@ -66,7 +66,7 @@ const HeroSection = () => {
             className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300"
             whileHover={{ y: -5, scale: 1.02 }}
           >
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <TrendingUp className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-white font-semibold text-xl mb-4">
@@ -98,7 +98,7 @@ const HeroSection = () => {
             className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300"
             whileHover={{ y: -5, scale: 1.02 }}
           >
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-gradient-to-r from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Shield className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-white font-semibold text-xl mb-4">

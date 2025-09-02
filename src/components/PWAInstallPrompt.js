@@ -169,7 +169,7 @@ const PWAInstallPrompt = () => {
         exit={{ opacity: 0, y: 100 }}
         className="fixed bottom-4 left-4 right-4 z-50 max-w-md mx-auto"
       >
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl border border-white/20 backdrop-blur-sm">
+        <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl shadow-2xl border border-white/20 backdrop-blur-sm">
           <div className="p-6">
             {/* رأس النافذة */}
             <div className="flex items-center justify-between mb-4">
@@ -220,7 +220,7 @@ const PWAInstallPrompt = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleInstallClick}
-                  className="flex-1 bg-white text-blue-600 font-semibold py-3 px-4 rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
+                  className="flex-1 bg-white text-primary-600 font-semibold py-3 px-4 rounded-xl hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   تثبيت الآن

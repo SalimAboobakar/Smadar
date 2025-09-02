@@ -138,9 +138,9 @@ const NotificationSystem = () => {
       case "warning":
         return "text-yellow-600 bg-yellow-100";
       case "info":
-        return "text-blue-600 bg-blue-100";
+        return "text-primary-600 bg-blue-100";
       case "trend":
-        return "text-purple-600 bg-purple-100";
+        return "text-accent-600 bg-purple-100";
       case "investment":
         return "text-orange-600 bg-orange-100";
       default:
@@ -166,7 +166,7 @@ const NotificationSystem = () => {
       {/* زر الإشعارات */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+        className="relative p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
       >
         <Bell className="w-6 h-6" />
         {unreadCount > 0 && (
@@ -196,7 +196,7 @@ const NotificationSystem = () => {
                   {unreadCount > 0 && (
                     <button
                       onClick={markAllAsRead}
-                      className="text-sm text-blue-600 hover:text-blue-800"
+                      className="text-sm text-primary-600 hover:text-blue-800"
                     >
                       تعيين الكل كمقروء
                     </button>
@@ -278,7 +278,7 @@ const NotificationSystem = () => {
             {/* تذييل الإشعارات */}
             {notifications.length > 0 && (
               <div className="p-4 border-t border-gray-200">
-                <button className="w-full text-center text-sm text-blue-600 hover:text-blue-800">
+                <button className="w-full text-center text-sm text-primary-600 hover:text-blue-800">
                   عرض جميع الإشعارات
                 </button>
               </div>
@@ -298,7 +298,7 @@ const NotificationSystem = () => {
           >
             <div className="flex items-start gap-3">
               <div className="p-2 bg-blue-100 rounded-full">
-                <Bell className="w-4 h-4 text-blue-600" />
+                <Bell className="w-4 h-4 text-primary-600" />
               </div>
               <div className="flex-1">
                 <h4 className="text-sm font-medium text-gray-900">

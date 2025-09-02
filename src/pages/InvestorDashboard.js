@@ -372,7 +372,7 @@ const InvestorDashboard = () => {
                         repeat: Infinity,
                         ease: "linear",
                       }}
-                      className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full mx-auto mb-4"
+                      className="w-16 h-16 border-4 border-primary-500/30 border-t-primary-500 rounded-full mx-auto mb-4"
                     />
                     <h3 className="text-xl font-semibold text-white mb-2">
                       جاري التحليل...
@@ -561,7 +561,7 @@ const InvestorDashboard = () => {
                                   ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30 border-l-yellow-500"
                                   : rec.type === "error"
                                   ? "bg-red-500/20 text-red-300 border-red-500/30 border-l-red-500"
-                                  : "bg-blue-500/20 text-blue-300 border-blue-500/30 border-l-blue-500"
+                                  : "bg-blue-500/20 text-blue-300 border-primary-500/30 border-l-blue-500"
                               } hover:scale-105 transition-transform duration-200`}
                             >
                               <div className="flex items-start gap-3">
@@ -735,7 +735,7 @@ const InvestorDashboard = () => {
                         الصناعة والمنطقة الحرة تهيمن على 40% من السوق
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                    <div className="flex items-center gap-3 p-3 bg-blue-500/20 rounded-lg border border-primary-500/30">
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       <span className="text-blue-300 text-sm">
                         السياحة تسجل نمو 10.2% مع مليون زائر

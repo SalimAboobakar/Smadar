@@ -77,7 +77,7 @@ class ErrorBoundary extends React.Component {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={this.handleReload}
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white px-6 py-3 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300"
               >
                 <RefreshCw className="w-5 h-5" />
                 إعادة تحميل الصفحة

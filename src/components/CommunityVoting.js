@@ -116,7 +116,7 @@ const CommunityVoting = ({ projectId, projectData }) => {
   return (
     <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 relative overflow-hidden">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-gradient-to-r from-accent-500 to-primary-600 rounded-xl flex items-center justify-center">
           <Users className="w-5 h-5 text-white" />
         </div>
         <h3 className="text-xl font-semibold text-white">رأي المجتمع</h3>
@@ -144,7 +144,7 @@ const CommunityVoting = ({ projectId, projectData }) => {
         </motion.div>
 
         <motion.div
-          className="text-center p-6 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-2xl border border-blue-500/30"
+          className="text-center p-6 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-2xl border border-primary-500/30"
           whileHover={{ scale: 1.05 }}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -154,7 +154,7 @@ const CommunityVoting = ({ projectId, projectData }) => {
             key={votes.total}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="text-4xl font-bold text-blue-400 mb-2"
+            className="text-4xl font-bold text-primary-400 mb-2"
           >
             {votes.total}
           </motion.div>

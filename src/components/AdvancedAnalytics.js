@@ -115,7 +115,7 @@ const AdvancedAnalytics = () => {
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="3months">آخر 3 أشهر</option>
               <option value="6months">آخر 6 أشهر</option>
@@ -126,7 +126,7 @@ const AdvancedAnalytics = () => {
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="all">جميع المناطق</option>
               <option value="salalah">صلالة</option>
@@ -155,7 +155,7 @@ const AdvancedAnalytics = () => {
               </p>
             </div>
             <div className="p-3 bg-blue-100 rounded-full">
-              <DollarSign className="w-6 h-6 text-blue-600" />
+              <DollarSign className="w-6 h-6 text-primary-600" />
             </div>
           </div>
           <div className="mt-4 flex items-center">
@@ -205,7 +205,7 @@ const AdvancedAnalytics = () => {
               </p>
             </div>
             <div className="p-3 bg-purple-100 rounded-full">
-              <Target className="w-6 h-6 text-purple-600" />
+              <Target className="w-6 h-6 text-accent-600" />
             </div>
           </div>
           <div className="mt-4 flex items-center">
@@ -359,7 +359,7 @@ const AdvancedAnalytics = () => {
 
           <div className="mt-6 p-4 bg-blue-50 rounded-lg">
             <div className="flex items-center">
-              <AlertTriangle className="w-5 h-5 text-blue-600 mr-2" />
+              <AlertTriangle className="w-5 h-5 text-primary-600 mr-2" />
               <span className="text-sm font-medium text-blue-800">
                 توصية: التركيز على المشاريع منخفضة المخاطر لضمان الاستقرار
               </span>
@@ -378,7 +378,7 @@ const AdvancedAnalytics = () => {
         <h3 className="text-lg font-semibold mb-4">إحصائيات إضافية</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600">
+            <div className="text-2xl font-bold text-primary-600">
               {analyticsData.kpis.activeInvestors}
             </div>
             <div className="text-sm text-gray-600">مستثمر نشط</div>

@@ -80,7 +80,7 @@ const EnhancedHeader = () => {
 
             {/* شعار المنصة */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
                 <span className="text-white text-lg font-bold">ت</span>
               </div>
               <div className="hidden sm:block">
@@ -109,7 +109,7 @@ const EnhancedHeader = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="البحث في المشاريع والفرص الاستثمارية..."
-                  className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-right"
+                  className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-right"
                 />
               </div>
             </form>
@@ -120,7 +120,7 @@ const EnhancedHeader = () => {
             {/* البحث المحمول */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
             >
               <Search className="w-5 h-5" />
             </button>
@@ -131,7 +131,7 @@ const EnhancedHeader = () => {
             {/* تبديل الوضع المظلم */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+              className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
             >
               {isDarkMode ? (
                 <Sun className="w-5 h-5" />
@@ -141,7 +141,7 @@ const EnhancedHeader = () => {
             </button>
 
             {/* تغيير اللغة */}
-            <button className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg">
+            <button className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
               <Globe className="w-5 h-5" />
             </button>
 
@@ -149,9 +149,9 @@ const EnhancedHeader = () => {
             <div className="relative">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-2 p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                className="flex items-center gap-2 p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
               >
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-bold">م</span>
                 </div>
                 <span className="hidden sm:block text-sm font-medium">
@@ -215,7 +215,7 @@ const EnhancedHeader = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="البحث في المشاريع والفرص الاستثمارية..."
-                  className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-right"
+                  className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-right"
                 />
               </div>
             </form>

@@ -326,7 +326,7 @@ const MarketPage = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full opacity-10 blur-3xl"
+          className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-primary-400 to-accent-400 rounded-full opacity-10 blur-3xl"
         />
         <motion.div
           initial={{ scale: 0 }}
@@ -423,7 +423,7 @@ const MarketPage = () => {
               <select
                 value={selectedTimeframe}
                 onChange={(e) => setSelectedTimeframe(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               >
                 <option value="1month">شهر واحد</option>
                 <option value="3months">3 أشهر</option>
@@ -434,7 +434,7 @@ const MarketPage = () => {
               <select
                 value={selectedSector}
                 onChange={(e) => setSelectedSector(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               >
                 <option value="all">جميع القطاعات</option>
                 <option value="tourism">السياحة</option>
@@ -447,7 +447,7 @@ const MarketPage = () => {
               <select
                 value={selectedRegion}
                 onChange={(e) => setSelectedRegion(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               >
                 <option value="all">جميع المناطق</option>
                 <option value="salalah">صلالة</option>
@@ -457,7 +457,7 @@ const MarketPage = () => {
             </div>
 
             <div className="flex gap-3">
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+              <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center gap-2">
                 <RefreshCw className="w-4 h-4" />
                 تحديث البيانات
               </button>
@@ -513,7 +513,7 @@ const MarketPage = () => {
                 <div className="mt-4">
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-1000"
+                      className="bg-gradient-to-r from-accent-500 to-primary-500 h-2 rounded-full transition-all duration-1000"
                       style={{ width: `${indicator.value}%` }}
                     />
                   </div>
@@ -538,15 +538,15 @@ const MarketPage = () => {
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full -translate-x-16 -translate-y-16" />
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary-400 to-accent-400 rounded-full -translate-x-16 -translate-y-16" />
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-br from-green-400 to-blue-400 rounded-full translate-x-12 translate-y-12" />
             </div>
             <div className="relative mb-8">
               <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-2">
-                <div className="p-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-lg">
+                <div className="p-2 bg-gradient-to-r from-accent-500 to-primary-500 rounded-lg shadow-lg">
                   <PieChart className="w-6 h-6 text-white" />
                 </div>
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
                   توزيع القطاعات الاستثمارية
                 </span>
               </h3>
@@ -649,7 +649,7 @@ const MarketPage = () => {
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-600">
                 إجمالي الاستثمارات:{" "}
-                <span className="font-bold text-blue-600">
+                <span className="font-bold text-primary-600">
                   {formatCurrency(marketData.marketOverview.totalMarketValue)}
                 </span>
               </p>

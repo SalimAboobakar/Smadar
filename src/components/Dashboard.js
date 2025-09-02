@@ -194,8 +194,8 @@ const Dashboard = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-right">
               <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2 flex items-center justify-center lg:justify-start gap-3">
-                <div className="p-2 bg-blue-500/20 rounded-xl">
-                  <Brain className="w-8 h-8 lg:w-10 lg:h-10 text-blue-400" />
+                <div className="p-2 bg-primary-500/20 rounded-xl">
+                  <Brain className="w-8 h-8 lg:w-10 lg:h-10 text-primary-400" />
                 </div>
                 منصة تدوم
               </h1>
@@ -207,7 +207,7 @@ const Dashboard = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleExportPDF}
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white px-6 py-3 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Download className="w-5 h-5" />
               <span className="hidden sm:inline">تصدير التقرير</span>
@@ -224,8 +224,8 @@ const Dashboard = () => {
           className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 lg:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300"
         >
           <h2 className="text-xl lg:text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-            <div className="p-2 bg-blue-500/20 rounded-lg">
-              <Target className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400" />
+            <div className="p-2 bg-primary-500/20 rounded-lg">
+              <Target className="w-5 h-5 lg:w-6 lg:h-6 text-primary-400" />
             </div>
             اختيار المشروع
           </h2>
@@ -237,7 +237,7 @@ const Dashboard = () => {
               <select
                 value={selectedRegion}
                 onChange={(e) => setSelectedRegion(e.target.value)}
-                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
               >
                 <option value="salalah">صلالة</option>
                 <option value="mirbat">مرباط</option>
@@ -252,7 +252,7 @@ const Dashboard = () => {
               <select
                 value={selectedProjectType}
                 onChange={(e) => setSelectedProjectType(e.target.value)}
-                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
               >
                 {Object.entries(projectTypes).map(([key, type]) => (
                   <option key={key} value={key}>
@@ -269,7 +269,7 @@ const Dashboard = () => {
               <select
                 value={selectedAudience}
                 onChange={(e) => setSelectedAudience(e.target.value)}
-                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
               >
                 {Object.entries(targetAudiences).map(([key, audience]) => (
                   <option key={key} value={key}>
@@ -287,7 +287,7 @@ const Dashboard = () => {
                 type="number"
                 value={investmentAmount}
                 onChange={(e) => setInvestmentAmount(Number(e.target.value))}
-                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm placeholder-white/50 hover:bg-white/15 transition-all duration-200"
+                className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm placeholder-white/50 hover:bg-white/15 transition-all duration-200"
                 placeholder="100000"
               />
             </div>
@@ -306,7 +306,7 @@ const Dashboard = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full mx-auto mb-4"
+                className="w-16 h-16 border-4 border-primary-500/30 border-t-primary-500 rounded-full mx-auto mb-4"
               />
               <h3 className="text-xl font-semibold text-white mb-2">
                 جاري التحليل...
@@ -330,7 +330,7 @@ const Dashboard = () => {
             whileHover={{ scale: 1.03, y: -4 }}
             className="relative group"
           >
-            <div className="bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6 hover:border-blue-500/50 transition-all duration-500 shadow-2xl hover:shadow-blue-500/20">
+            <div className="bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6 hover:border-primary-500/50 transition-all duration-500 shadow-2xl hover:shadow-blue-500/20">
               <div className="flex items-center justify-between mb-6">
                 <div className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300">
                   <TrendingUp className="w-7 h-7 text-white" />
@@ -351,7 +351,7 @@ const Dashboard = () => {
                 transition={{ duration: 0.5 }}
                 className="text-center"
               >
-                <p className="text-3xl lg:text-4xl font-black text-blue-400 mb-3">
+                <p className="text-3xl lg:text-4xl font-black text-primary-400 mb-3">
                   {isAnalyzing ? "..." : `${results?.iai || 0}%`}
                 </p>
                 <div className="w-full bg-slate-700/50 rounded-full h-2 overflow-hidden">
@@ -506,8 +506,8 @@ const Dashboard = () => {
           <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
             <div className="p-6">
               <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                <div className="p-2 bg-blue-500/20 rounded-lg">
-                  <BarChart3 className="w-6 h-6 text-blue-400" />
+                <div className="p-2 bg-primary-500/20 rounded-lg">
+                  <BarChart3 className="w-6 h-6 text-primary-400" />
                 </div>
                 توزيع الطلب
               </h3>
@@ -579,7 +579,7 @@ const Dashboard = () => {
                             ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30 border-l-yellow-500"
                             : rec.type === "error"
                             ? "bg-red-500/20 text-red-300 border-red-500/30 border-l-red-500"
-                            : "bg-blue-500/20 text-blue-300 border-blue-500/30 border-l-blue-500"
+                            : "bg-primary-500/20 text-blue-300 border-primary-500/30 border-l-blue-500"
                         } hover:scale-105 transition-transform duration-200`}
                       >
                         <div className="flex items-start gap-3">

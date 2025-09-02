@@ -29,7 +29,7 @@ const MobileNavigation = () => {
       name: "الرئيسية",
       icon: Home,
       path: "/",
-      color: "text-blue-600",
+      color: "text-primary-600",
     },
     {
       id: "admin",
@@ -50,7 +50,7 @@ const MobileNavigation = () => {
       name: "صفحة الناخب",
       icon: Vote,
       path: "/voter",
-      color: "text-purple-600",
+      color: "text-accent-600",
     },
     {
       id: "investment",
@@ -87,7 +87,7 @@ const MobileNavigation = () => {
       {/* زر القائمة */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+        className="lg:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
       >
         <Menu className="w-6 h-6" />
       </button>
@@ -96,7 +96,7 @@ const MobileNavigation = () => {
       <div className="hidden lg:flex items-center gap-4">
         <NotificationSystem />
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
             <span className="text-white text-sm font-bold">م</span>
           </div>
           <span className="text-sm font-medium text-gray-700">مدير النظام</span>
@@ -127,7 +127,7 @@ const MobileNavigation = () => {
               {/* رأس القائمة */}
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
                     <span className="text-white text-lg font-bold">ت</span>
                   </div>
                   <div>
@@ -148,7 +148,7 @@ const MobileNavigation = () => {
               {/* معلومات المستخدم */}
               <div className="p-4 bg-gray-50 border-b border-gray-200">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center">
                     <span className="text-white text-lg font-bold">م</span>
                   </div>
                   <div>
@@ -186,7 +186,7 @@ const MobileNavigation = () => {
                           {item.name}
                         </span>
                         {isActive(item.path) && (
-                          <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                          <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
                         )}
                       </button>
                     </div>

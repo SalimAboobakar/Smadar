@@ -222,7 +222,7 @@ const InvestmentOpportunities = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-2 rounded-lg transition-colors flex items-center gap-2 ${
                 activeTab === tab.id
-                  ? "bg-blue-600 text-white"
+                  ? "bg-primary-600 text-white"
                   : "bg-white text-gray-700 hover:bg-gray-50"
               }`}
             >
@@ -238,7 +238,7 @@ const InvestmentOpportunities = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <AnimatedCard className="p-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">
+              <div className="text-3xl font-bold text-primary-600">
                 {stats.totalSectors}
               </div>
               <div className="text-gray-600">قطاع استثماري</div>
@@ -256,7 +256,7 @@ const InvestmentOpportunities = () => {
 
           <AnimatedCard className="p-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">
+              <div className="text-3xl font-bold text-accent-600">
                 {stats.averageCapitalRange
                   ? formatCurrency(stats.averageCapitalRange.min)
                   : formatCurrency(150000)}
@@ -290,7 +290,7 @@ const InvestmentOpportunities = () => {
                 onClick={() => setSelectedSector("all")}
                 className={`px-4 py-2 rounded-full transition-colors ${
                   selectedSector === "all"
-                    ? "bg-blue-600 text-white"
+                    ? "bg-primary-600 text-white"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
               >
@@ -303,7 +303,7 @@ const InvestmentOpportunities = () => {
                     onClick={() => setSelectedSector(category)}
                     className={`px-4 py-2 rounded-full transition-colors ${
                       selectedSector === category
-                        ? "bg-blue-600 text-white"
+                        ? "bg-primary-600 text-white"
                         : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                     }`}
                   >
@@ -575,7 +575,7 @@ const InvestmentOpportunities = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {Object.entries(investmentTips).map(([category, tips]) => (
             <AnimatedCard key={category} className="p-6">
-              <h3 className="text-xl font-bold mb-4 text-blue-600">
+              <h3 className="text-xl font-bold mb-4 text-primary-600">
                 {category === "general" && "نصائح عامة"}
                 {category === "dhofar" && "نصائح خاصة بظفار"}
                 {category === "seasonal" && "نصائح موسمية"}
@@ -599,11 +599,11 @@ const InvestmentOpportunities = () => {
           {Object.entries(marketForecasts).map(([year, forecast]) => (
             <AnimatedCard key={year} className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-2xl font-bold text-purple-600">
+                <h3 className="text-2xl font-bold text-accent-600">
                   عام {year}
                 </h3>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-purple-600">
+                  <div className="text-3xl font-bold text-accent-600">
                     {formatCurrency(forecast.totalMarketValue)}
                   </div>
                   <div className="text-sm text-gray-600">
@@ -697,7 +697,7 @@ const InvestmentOpportunities = () => {
                         <h4 className="font-semibold text-blue-800 mb-2">
                           الإيرادات الشهرية المتوقعة
                         </h4>
-                        <div className="text-lg font-bold text-blue-600">
+                        <div className="text-lg font-bold text-primary-600">
                           {formatCurrency(calc.minMonthly)} -{" "}
                           {formatCurrency(calc.maxMonthly)}
                         </div>
@@ -714,7 +714,7 @@ const InvestmentOpportunities = () => {
                         <h4 className="font-semibold text-purple-800 mb-2">
                           صافي الربح الشهري المتوقع
                         </h4>
-                        <div className="text-lg font-bold text-purple-600">
+                        <div className="text-lg font-bold text-accent-600">
                           {formatCurrency(
                             calc.minMonthly - calc.operatingCosts
                           )}{" "}
@@ -794,7 +794,7 @@ const InvestmentOpportunities = () => {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
                 >
                   حفظ التقييم
                 </button>

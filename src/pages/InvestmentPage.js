@@ -50,7 +50,7 @@ const InvestmentPage = () => {
               <button
                 onClick={handleUploadData}
                 disabled={uploading}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
               >
                 {uploading ? (
                   <>
@@ -107,7 +107,7 @@ const InvestmentPage = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
+              <div className="text-4xl font-bold text-primary-600 mb-2">15+</div>
               <div className="text-gray-600">قطاع استثماري</div>
             </div>
             <div className="text-center">
@@ -115,7 +115,7 @@ const InvestmentPage = () => {
               <div className="text-gray-600">ريال عماني حجم السوق</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-purple-600 mb-2">35%</div>
+              <div className="text-4xl font-bold text-accent-600 mb-2">35%</div>
               <div className="text-gray-600">متوسط العائد السنوي</div>
             </div>
             <div className="text-center">
@@ -136,7 +136,7 @@ const InvestmentPage = () => {
             <div className="text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
-                  className="w-10 h-10 text-blue-600"
+                  className="w-10 h-10 text-primary-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -182,7 +182,7 @@ const InvestmentPage = () => {
             <div className="text-center">
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg
-                  className="w-10 h-10 text-purple-600"
+                  className="w-10 h-10 text-accent-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -217,13 +217,13 @@ const InvestmentPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#opportunities"
-              className="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               استكشف الفرص
             </a>
             <a
               href="#calculator"
-              className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors"
             >
               احسب العوائد
             </a>

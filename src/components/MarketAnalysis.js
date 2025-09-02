@@ -35,7 +35,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
         className="bg-white rounded-xl shadow-lg p-6"
       >
         <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-          <TrendingUp className="w-6 h-6 text-purple-600" />
+          <TrendingUp className="w-6 h-6 text-accent-600" />
           اتجاهات السوق (مليون ر.ع)
         </h3>
         <ResponsiveContainer width="100%" height={400}>
@@ -106,7 +106,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
             <Star className="w-6 h-6 text-yellow-500" />
             أفضل المشاريع أداءً
           </h3>
-          <button className="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-2">
+          <button className="text-primary-600 hover:text-blue-800 font-medium flex items-center gap-2">
             عرض المزيد
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -212,7 +212,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
               transition={{ delay: 1.2 + index * 0.2 }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-6 text-white">
+              <div className="bg-gradient-to-br from-accent-500 to-primary-600 rounded-xl p-6 text-white">
                 <div className="flex items-center justify-between mb-4">
                   <h4 className="text-xl font-bold">{region.region}</h4>
                   <div className="text-2xl font-bold">{region.percentage}%</div>
@@ -263,7 +263,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
         {/* رؤى السوق */}
-        <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white">
+        <div className="bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl p-6 text-white">
           <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
             <Eye className="w-6 h-6" />
             رؤى السوق
@@ -321,7 +321,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
                 <span className="font-semibold text-blue-800">
                   مستثمرون جدد
                 </span>
-                <span className="text-2xl font-bold text-blue-600">+320</span>
+                <span className="text-2xl font-bold text-primary-600">+320</span>
               </div>
               <p className="text-blue-700 text-sm">
                 توقعات بانضمام مستثمرين جدد للسوق
@@ -333,7 +333,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
                 <span className="font-semibold text-purple-800">
                   مشاريع جديدة
                 </span>
-                <span className="text-2xl font-bold text-purple-600">+25</span>
+                <span className="text-2xl font-bold text-accent-600">+25</span>
               </div>
               <p className="text-purple-700 text-sm">
                 مشاريع استثمارية جديدة في المراحل النهائية
@@ -357,11 +357,11 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
           اكتشف الفرص الذهبية في سوق ظفار واستثمر في مستقبل واعد مع عوائد مجزية
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors flex items-center gap-2">
+          <button className="bg-white text-primary-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors flex items-center gap-2">
             <Target className="w-5 h-5" />
             استكشف الفرص
           </button>
-          <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-600 transition-colors flex items-center gap-2">
+          <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary-600 transition-colors flex items-center gap-2">
             <BarChart3 className="w-5 h-5" />
             تحليل مفصل
           </button>

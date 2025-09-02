@@ -47,7 +47,7 @@ const PlatformStats = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full mx-auto mb-4"
+            className="w-12 h-12 border-4 border-primary-500/30 border-t-primary-500 rounded-full mx-auto mb-4"
           />
           <h3 className="text-lg font-semibold text-white mb-2">
             جاري تحميل الإحصائيات...
@@ -70,11 +70,11 @@ const PlatformStats = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <motion.div
-            className="text-center p-4 bg-blue-500/20 rounded-xl border border-blue-500/30"
+            className="text-center p-4 bg-primary-500/20 rounded-xl border border-primary-500/30"
             whileHover={{ scale: 1.05 }}
           >
-            <Users className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-blue-400">
+            <Users className="w-8 h-8 text-primary-400 mx-auto mb-2" />
+            <div className="text-2xl font-bold text-primary-400">
               {stats?.totalVotes || 0}
             </div>
             <div className="text-sm text-blue-300">إجمالي الأصوات</div>
@@ -92,11 +92,11 @@ const PlatformStats = () => {
           </motion.div>
 
           <motion.div
-            className="text-center p-4 bg-purple-500/20 rounded-xl border border-purple-500/30"
+            className="text-center p-4 bg-accent-500/20 rounded-xl border border-accent-500/30"
             whileHover={{ scale: 1.05 }}
           >
-            <Award className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-purple-400">
+            <Award className="w-8 h-8 text-accent-400 mx-auto mb-2" />
+            <div className="text-2xl font-bold text-accent-400">
               {stats?.approvalRate || 0}%
             </div>
             <div className="text-sm text-purple-300">نسبة الموافقة العامة</div>
@@ -137,7 +137,7 @@ const PlatformStats = () => {
                 className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-8 h-8 bg-gradient-to-r from-accent-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
                     {index + 1}
                   </div>
                   <div>

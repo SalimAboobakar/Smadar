@@ -148,7 +148,7 @@ const AdminDashboard = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                className="flex items-center gap-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white px-6 py-3 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300"
               >
                 <Download className="w-5 h-5" />
                 تصدير التقرير
@@ -175,7 +175,7 @@ const AdminDashboard = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 ${
                   activeTab === tab.id
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                    ? "bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg"
                     : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -315,7 +315,7 @@ const AdminDashboard = () => {
                     <input
                       type="text"
                       placeholder="البحث في المشاريع..."
-                      className="pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
                   <motion.button
