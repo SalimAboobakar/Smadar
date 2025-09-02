@@ -67,7 +67,7 @@ const GeminiIntegration = ({ projectData, results }) => {
       });
     } catch (err) {
       setError("حدث خطأ في التحليل. يرجى المحاولة لاحقاً.");
-      console.error("Gemini Analysis Error:", err);
+      console.error("AI Analysis Error:", err);
     } finally {
       setIsAnalyzing(false);
     }
@@ -88,7 +88,7 @@ const GeminiIntegration = ({ projectData, results }) => {
           <Brain className="w-5 h-5 text-white" />
         </div>
         <h3 className="text-xl font-semibold text-white">
-          التحليل الذكي بـ Gemini AI
+          التحليل الذكي بالذكاء الاصطناعي
         </h3>
       </div>
 
@@ -136,7 +136,7 @@ const GeminiIntegration = ({ projectData, results }) => {
             <h4 className="text-lg font-semibold text-white mb-2">
               جاري التحليل الذكي...
             </h4>
-            <p className="text-white/70">Gemini AI يحلل بيانات المشروع</p>
+            <p className="text-white/70">الذكاء الاصطناعي يحلل بيانات المشروع</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -193,7 +193,7 @@ const GeminiIntegration = ({ projectData, results }) => {
             التحليل الذكي متاح
           </h4>
           <p className="text-white/70 mb-4">
-            اختر نوع التحليل المطلوب للحصول على تحليل متقدم من Gemini AI
+            اختر نوع التحليل المطلوب للحصول على تحليل متقدم من الذكاء الاصطناعي
           </p>
           <div className="text-sm text-white/50">
             💡 سيتم تحليل بيانات المشروع وتقديم توصيات ذكية مخصصة

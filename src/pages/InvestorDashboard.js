@@ -27,6 +27,7 @@ import {
 import AnimatedCard from "../components/ui/AnimatedCard";
 import CommunityVoting from "../components/CommunityVoting";
 import GeminiIntegration from "../components/GeminiIntegration";
+import InvestmentPortfolio from "../components/InvestmentPortfolio";
 import {
   calculateIAI,
   calculateSS,
@@ -212,6 +213,15 @@ const InvestorDashboard = () => {
               </div>
             </div>
             <div className="flex items-center gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/market")}
+                className="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg"
+              >
+                <Target className="w-5 h-5" />
+                السوق الاستثماري
+              </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -605,13 +615,8 @@ const InvestorDashboard = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
             >
-              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                <TrendingUp className="w-6 h-6 text-green-400" />
-                محفظة الاستثمارات
-              </h3>
-              <p className="text-white/70">قريباً - إدارة محفظة الاستثمارات</p>
+              <InvestmentPortfolio />
             </motion.div>
           )}
 
@@ -622,13 +627,148 @@ const InvestorDashboard = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+              className="space-y-6"
             >
-              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                <Target className="w-6 h-6 text-blue-400" />
-                تحليل السوق
-              </h3>
-              <p className="text-white/70">قريباً - تحليل السوق والاتجاهات</p>
+              {/* Market Overview Card */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:from-blue-500/30 hover:to-purple-600/30 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-blue-500/20 rounded-xl">
+                      <Target className="w-8 h-8 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">
+                        سوق ظفار الاستثماري
+                      </h3>
+                      <p className="text-white/70">
+                        تحليل شامل للسوق والفرص الاستثمارية
+                      </p>
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => navigate("/market")}
+                    className="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    <Target className="w-5 h-5" />
+                    استكشف السوق
+                  </motion.button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                  >
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-emerald-400 mb-2">
+                        4.7
+                      </div>
+                      <div className="text-sm text-white/70">مليار ر.ع</div>
+                      <div className="text-xs text-white/50 mt-1">
+                        حجم السوق الإجمالي
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                  >
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-blue-400 mb-2">
+                        285
+                      </div>
+                      <div className="text-sm text-white/70">مستثمر نشط</div>
+                      <div className="text-xs text-white/50 mt-1">
+                        في المنطقة الحرة
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                  >
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-purple-400 mb-2">
+                        9.8%
+                      </div>
+                      <div className="text-sm text-white/70">معدل النمو</div>
+                      <div className="text-xs text-white/50 mt-1">
+                        نمو مستدام
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Quick Market Insights */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+              >
+                <h4 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                  <BarChart3 className="w-6 h-6 text-green-400" />
+                  رؤى السوق السريعة
+                </h4>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 p-3 bg-green-500/20 rounded-lg border border-green-500/30">
+                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                      <span className="text-green-300 text-sm">
+                        الصناعة والمنطقة الحرة تهيمن على 40% من السوق
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                      <span className="text-blue-300 text-sm">
+                        السياحة تسجل نمو 10.2% مع مليون زائر
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                      <span className="text-yellow-300 text-sm">
+                        الثروة السمكية: مشروع الصفيلح بـ10 مليون ر.ع
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col justify-center">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => navigate("/market")}
+                      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-3"
+                    >
+                      <div className="flex flex-col items-center">
+                        <Target className="w-8 h-8 mb-2" />
+                        <span className="text-lg font-semibold">
+                          عرض التحليل الكامل
+                        </span>
+                        <span className="text-sm text-white/80">
+                          رسوم بيانية تفاعلية ومؤشرات متقدمة
+                        </span>
+                      </div>
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           )}
 

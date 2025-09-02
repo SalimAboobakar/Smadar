@@ -1,17 +1,79 @@
 {
   "short_name": "تدوم",
   "name": "منصة تدوم - ذكاء استثماري بلمسة المجتمع",
+  "description": "منصة ذكاء استثماري بلمسة المجتمع لتقييم جدوى المشاريع في محافظة ظفار",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "theme_color": "#1e40af",
+  "background_color": "#1e3a8a",
   "lang": "ar",
-  "dir": "rtl"
+  "dir": "rtl",
+  "scope": "/",
+  "categories": ["business", "finance", "productivity"],
+  "shortcuts": [
+    {
+      "name": "السوق الاستثماري",
+      "short_name": "السوق",
+      "description": "عرض تحليل السوق والفرص الاستثمارية",
+      "url": "/market",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "لوحة المستثمر",
+      "short_name": "المستثمر",
+      "description": "أدوات التحليل والاستثمار الذكية",
+      "url": "/investor",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "التحليلات المتقدمة",
+      "short_name": "التحليلات",
+      "description": "لوحة التحكم والتحليلات المتقدمة",
+      "url": "/dashboard",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "الفرص الاستثمارية",
+      "short_name": "الفرص",
+      "description": "استكشاف الفرص الاستثمارية المتاحة",
+      "url": "/investment",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot2.png",
+      "type": "image/png",
+      "sizes": "750x1334",
+      "form_factor": "narrow"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

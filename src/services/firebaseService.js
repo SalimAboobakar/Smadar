@@ -546,6 +546,74 @@ const getClientIP = async () => {
   }
 };
 
+// خدمة رفع جميع البيانات إلى Firebase
+export const uploadAllDataToFirebase = async () => {
+  try {
+    if (!canUseFirebase()) {
+      console.warn("Firebase غير متاح");
+      return false;
+    }
+
+    console.log("بدء رفع جميع البيانات إلى Firebase...");
+
+    // استيراد خدمة البيانات الاستثمارية
+    const { uploadInvestmentDataToFirebase } = await import(
+      "./investmentDataService"
+    );
+
+    // رفع بيانات الفرص الاستثمارية
+    const investmentResult = await uploadInvestmentDataToFirebase();
+
+    if (investmentResult) {
+      console.log("✅ تم رفع بيانات الفرص الاستثمارية بنجاح");
+    } else {
+      console.warn("⚠️ فشل في رفع بيانات الفرص الاستثمارية");
+    }
+
+    // يمكن إضافة المزيد من خدمات رفع البيانات هنا
+    console.log("تم الانتهاء من رفع البيانات إلى Firebase");
+    return true;
+  } catch (error) {
+    console.error("خطأ في رفع البيانات إلى Firebase:", error);
+    return false;
+  }
+};
+
+// خدمة جلب جميع البيانات من Firebase
+export const getAllDataFromFirebase = async () => {
+  try {
+    if (!canUseFirebase()) {
+      console.warn("Firebase غير متاح، سيتم استخدام البيانات المحلية");
+      return null;
+    }
+
+    console.log("بدء جلب جميع البيانات من Firebase...");
+
+    // استيراد خدمة البيانات الاستثمارية
+    const {
+      getInvestmentOpportunitiesFromFirebase,
+      getRequiredLicensesFromFirebase,
+    } = await import("./investmentDataService");
+
+    // جلب بيانات الفرص الاستثمارية
+    const investmentOpportunities =
+      await getInvestmentOpportunitiesFromFirebase();
+    const requiredLicenses = await getRequiredLicensesFromFirebase();
+
+    const allData = {
+      investmentOpportunities,
+      requiredLicenses,
+      timestamp: new Date().toISOString(),
+    };
+
+    console.log("تم جلب جميع البيانات من Firebase بنجاح");
+    return allData;
+  } catch (error) {
+    console.error("خطأ في جلب البيانات من Firebase:", error);
+    return null;
+  }
+};
+
 export default {
   saveVotingResult,
   getVotingResults,
@@ -554,4 +622,6 @@ export default {
   saveGeminiAnalysis,
   getPlatformStats,
   getPopularProjects,
+  uploadAllDataToFirebase,
+  getAllDataFromFirebase,
 };

@@ -452,7 +452,7 @@ const VoterPage = () => {
                     }`}
                   >
                     <ThumbsUp className="w-5 h-5" />
-                    موافق
+                    مهتم
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -466,7 +466,7 @@ const VoterPage = () => {
                     }`}
                   >
                     <ThumbsDown className="w-5 h-5" />
-                    غير موافق
+                    غير مهتم
                   </motion.button>
                 </div>
 

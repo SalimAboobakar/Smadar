@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -11,12 +11,60 @@ import {
   ArrowRight,
   UserCog,
   Vote,
+  Briefcase,
+  Search,
+  Download,
+  Smartphone,
 } from "lucide-react";
 import HeroSection from "../components/HeroSection";
 import ChatbotTrigger from "../components/ChatbotTrigger";
+import PWAInstallPrompt from "../components/PWAInstallPrompt";
+import AdvancedSearch from "../components/AdvancedSearch";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+
+  // بيانات البحث (يمكن دمجها مع البيانات من الخدمات)
+  const searchableData = [
+    {
+      name: "لوحة المدير",
+      type: "صفحة",
+      description: "إدارة شاملة للمنصة",
+      path: "/admin",
+    },
+    {
+      name: "لوحة المستثمر",
+      type: "صفحة",
+      description: "أدوات التحليل والاستثمار",
+      path: "/investor",
+    },
+    {
+      name: "السوق الاستثماري",
+      type: "صفحة",
+      description: "تحليل السوق والفرص",
+      path: "/market",
+    },
+    {
+      name: "الفرص الاستثمارية",
+      type: "صفحة",
+      description: "استكشاف الفرص المتاحة",
+      path: "/investment",
+    },
+    {
+      name: "التحليلات المتقدمة",
+      type: "صفحة",
+      description: "لوحة التحكم والتحليلات",
+      path: "/dashboard",
+    },
+    {
+      name: "التصويت المجتمعي",
+      type: "صفحة",
+      description: "التصويت على المشاريع",
+      path: "/voter",
+    },
+  ];
 
   const userTypes = [
     {
@@ -61,12 +109,125 @@ const LandingPage = () => {
       ],
       path: "/voter",
     },
+    {
+      id: "investment",
+      title: "الفرص الاستثمارية",
+      description: "استكشف أفضل الفرص الاستثمارية في ظفار",
+      icon: Briefcase,
+      color: "from-orange-500 to-red-600",
+      features: [
+        "فرص استثمارية حقيقية",
+        "تحليل مفصل لكل قطاع",
+        "بيانات دقيقة ومحدثة",
+        "تقييم المخاطر والعوائد",
+      ],
+      path: "/investment",
+    },
+    {
+      id: "dashboard",
+      title: "لوحة التحكم المحسنة",
+      description: "تحليلات متقدمة وإحصائيات شاملة",
+      icon: BarChart3,
+      color: "from-indigo-500 to-purple-600",
+      features: [
+        "تحليلات متقدمة",
+        "رسوم بيانية تفاعلية",
+        "إحصائيات شاملة",
+        "رؤى وتنبؤات ذكية",
+      ],
+      path: "/dashboard",
+    },
+    {
+      id: "market",
+      title: "سوق ظفار الاستثماري",
+      description: "تحليل شامل للسوق والفرص الاستثمارية",
+      icon: TrendingUp,
+      color: "from-emerald-500 to-teal-600",
+      features: [
+        "تحليل السوق الشامل",
+        "مؤشرات الأداء الرئيسية",
+        "اتجاهات الاستثمار",
+        "توقعات مستقبلية",
+      ],
+      path: "/market",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Hero Section */}
       <HeroSection />
+
+      {/* شريط البحث السريع */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="max-w-4xl mx-auto mb-12"
+      >
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => setShowSearch(!showSearch)}
+          className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-right hover:bg-white/20 transition-all duration-300 group"
+        >
+          <div className="flex items-center justify-between">
+            <Search className="w-6 h-6 text-white/60 group-hover:text-white transition-colors" />
+            <span className="text-white/80 group-hover:text-white transition-colors">
+              ابحث في المنصة... (المشاريع، الصفحات، البيانات)
+            </span>
+          </div>
+        </motion.button>
+
+        {showSearch && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mt-4"
+          >
+            <AdvancedSearch
+              data={searchableData}
+              onResults={setSearchResults}
+              placeholder="ابحث في جميع أجزاء المنصة..."
+            />
+
+            {searchResults.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4"
+              >
+                <h3 className="text-white font-semibold mb-3 text-right">
+                  نتائج البحث ({searchResults.length})
+                </h3>
+                <div className="space-y-2">
+                  {searchResults.slice(0, 5).map((result, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.02 }}
+                      onClick={() => navigate(result.path)}
+                      className="bg-white/10 rounded-lg p-3 cursor-pointer hover:bg-white/20 transition-all duration-200"
+                    >
+                      <div className="flex justify-between items-center">
+                        <ArrowRight className="w-4 h-4 text-white/60" />
+                        <div className="text-right">
+                          <div className="text-white font-medium">
+                            {result.name}
+                          </div>
+                          <div className="text-white/60 text-sm">
+                            {result.description}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+        )}
+      </motion.div>
 
       {/* User Type Selection */}
       <div className="max-w-7xl mx-auto px-4 py-16">
@@ -193,6 +354,7 @@ const LandingPage = () => {
 
       {/* AI Chatbot Trigger */}
       <ChatbotTrigger />
+      <PWAInstallPrompt />
     </div>
   );
 };
