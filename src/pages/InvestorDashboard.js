@@ -28,6 +28,7 @@ import AnimatedCard from "../components/ui/AnimatedCard";
 import CommunityVoting from "../components/CommunityVoting";
 import GeminiIntegration from "../components/GeminiIntegration";
 import InvestmentPortfolio from "../components/InvestmentPortfolio";
+import AIInvestmentAdvisor from "../components/AIInvestmentAdvisor";
 import {
   calculateIAI,
   calculateSS,
@@ -37,6 +38,7 @@ import {
 } from "../utils/calculations";
 import { projectTypes, targetAudiences } from "../data/dhofarData";
 import { exportToPDF } from "../services/pdfService";
+import { getDemoPortfolio } from "../services/portfolioService";
 import ChatbotTrigger from "../components/ChatbotTrigger";
 
 ChartJS.register(
@@ -58,10 +60,18 @@ const InvestorDashboard = () => {
   const [results, setResults] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [activeTab, setActiveTab] = useState("analysis");
+  const [portfolioView, setPortfolioView] = useState('overview');
+  const [portfolioData, setPortfolioData] = useState([]);
 
   useEffect(() => {
     calculateResults();
   }, [selectedRegion, selectedProjectType, selectedAudience, investmentAmount]);
+
+  useEffect(() => {
+    // Load demo portfolio data for AI analysis
+    const demoData = getDemoPortfolio();
+    setPortfolioData(demoData);
+  }, []);
 
   const calculateResults = async () => {
     setIsAnalyzing(true);
@@ -179,7 +189,6 @@ const InvestorDashboard = () => {
     { id: "analysis", name: "التحليل", icon: BarChart3 },
     { id: "portfolio", name: "المحفظة", icon: TrendingUp },
     { id: "market", name: "السوق", icon: Target },
-    { id: "ai", name: "الذكاء الاصطناعي", icon: Brain },
   ];
 
   return (
@@ -615,8 +624,68 @@ const InvestorDashboard = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
+              className="space-y-6"
             >
-              <InvestmentPortfolio />
+              {/* Portfolio Sub-tabs */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <button
+                    onClick={() => setPortfolioView('overview')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      portfolioView === 'overview'
+                        ? 'bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <TrendingUp className="w-5 h-5 inline-block ml-2" />
+                    نظرة عامة
+                  </button>
+                  <button
+                    onClick={() => setPortfolioView('ai-advisor')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      portfolioView === 'ai-advisor'
+                        ? 'bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <Brain className="w-5 h-5 inline-block ml-2" />
+                    المستشار الذكي
+                  </button>
+                </div>
+              </div>
+
+              {/* Portfolio Content */}
+              <AnimatePresence mode="wait">
+                {portfolioView === 'overview' && (
+                  <motion.div
+                    key="portfolio-overview"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <InvestmentPortfolio />
+                  </motion.div>
+                )}
+                {portfolioView === 'ai-advisor' && (
+                  <motion.div
+                    key="ai-advisor"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <AIInvestmentAdvisor 
+                      portfolio={portfolioData}
+                      marketData={{
+                        region: selectedRegion,
+                        projectType: selectedProjectType,
+                        results: results
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
 
@@ -772,25 +841,7 @@ const InvestorDashboard = () => {
             </motion.div>
           )}
 
-          {activeTab === "ai" && (
-            <motion.div
-              key="ai"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <GeminiIntegration
-                projectData={{
-                  region: selectedRegion,
-                  projectType: selectedProjectType,
-                  audience: selectedAudience,
-                  investment: investmentAmount,
-                }}
-                results={results}
-              />
-            </motion.div>
-          )}
+
         </AnimatePresence>
       </div>
 
