@@ -86,7 +86,7 @@ const LandingPage = () => {
       title: "لوحة المستثمر",
       description: "أدوات التحليل والاستثمار الذكية",
       icon: TrendingUp,
-      color: "from-blue-500 to-purple-600",
+      color: "from-accent-500 to-primary-600",
       features: [
         "تحليل المشاريع",
         "تقييم المخاطر",
@@ -154,7 +154,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900">
       {/* Hero Section */}
       <HeroSection />
 

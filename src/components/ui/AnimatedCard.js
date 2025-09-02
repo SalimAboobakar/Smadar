@@ -12,7 +12,7 @@ const AnimatedCard = ({ children, className = "", ...props }) => {
       <div className="relative z-10">
         {children}
       </div>
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-xl blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
     </motion.div>
   );
 };

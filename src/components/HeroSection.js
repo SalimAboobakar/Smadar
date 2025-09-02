@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-6 py-3 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-accent-500/20 px-6 py-3 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
             <Sparkles className="w-5 h-5 text-blue-400" />
             <span className="text-sm text-white/90 font-medium">
               منصة تدوم - مستقبل الاستثمار الذكي
@@ -120,7 +120,7 @@ const HeroSection = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-2xl flex items-center gap-3 group"
+            className="bg-gradient-to-r from-accent-500 to-primary-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:from-accent-600 hover:to-primary-700 transition-all duration-300 shadow-2xl flex items-center gap-3 group"
           >
             اختر نوع المستخدم
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -183,7 +183,7 @@ const InvestorDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -217,7 +217,7 @@ const InvestorDashboard = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate("/market")}
-                className="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg"
+                className="flex items-center gap-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white px-6 py-3 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300 shadow-lg"
               >
                 <Target className="w-5 h-5" />
                 السوق الاستثماري
@@ -226,7 +226,7 @@ const InvestorDashboard = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleExportPDF}
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                className="flex items-center gap-2 bg-gradient-to-r from-primary-500 to-accent-600 text-white px-6 py-3 rounded-xl hover:from-primary-600 hover:to-accent-700 transition-all duration-300"
               >
                 <Download className="w-5 h-5" />
                 تصدير التقرير
@@ -253,7 +253,7 @@ const InvestorDashboard = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 ${
                   activeTab === tab.id
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                    ? "bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg"
                     : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -282,8 +282,8 @@ const InvestorDashboard = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 lg:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 mb-8"
               >
                 <h2 className="text-xl lg:text-2xl font-semibold text-white mb-6 flex items-center gap-3">
-                  <div className="p-2 bg-blue-500/20 rounded-lg">
-                    <Target className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400" />
+                  <div className="p-2 bg-primary-500/20 rounded-lg">
+                    <Target className="w-5 h-5 lg:w-6 lg:h-6 text-primary-400" />
                   </div>
                   اختيار المشروع
                 </h2>
@@ -295,7 +295,7 @@ const InvestorDashboard = () => {
                     <select
                       value={selectedRegion}
                       onChange={(e) => setSelectedRegion(e.target.value)}
-                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
                     >
                       <option value="salalah">صلالة</option>
                       <option value="mirbat">مرباط</option>
@@ -310,7 +310,7 @@ const InvestorDashboard = () => {
                     <select
                       value={selectedProjectType}
                       onChange={(e) => setSelectedProjectType(e.target.value)}
-                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
                     >
                       {Object.entries(projectTypes).map(([key, type]) => (
                         <option key={key} value={key}>
@@ -327,7 +327,7 @@ const InvestorDashboard = () => {
                     <select
                       value={selectedAudience}
                       onChange={(e) => setSelectedAudience(e.target.value)}
-                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
                     >
                       {Object.entries(targetAudiences).map(
                         ([key, audience]) => (
@@ -349,7 +349,7 @@ const InvestorDashboard = () => {
                       onChange={(e) =>
                         setInvestmentAmount(Number(e.target.value))
                       }
-                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm placeholder-white/50 hover:bg-white/15 transition-all duration-200"
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent backdrop-blur-sm placeholder-white/50 hover:bg-white/15 transition-all duration-200"
                       placeholder="100000"
                     />
                   </div>
@@ -391,10 +391,10 @@ const InvestorDashboard = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8"
               >
-                <AnimatedCard className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-blue-500/30 hover:from-blue-500/30 hover:to-blue-600/30 transition-all duration-300">
+                <AnimatedCard className="bg-gradient-to-br from-primary-500/20 to-primary-600/20 border-primary-500/30 hover:from-primary-500/30 hover:to-primary-600/30 transition-all duration-300">
                   <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="p-3 bg-blue-500/20 rounded-full">
-                      <TrendingUp className="w-8 h-8 text-blue-400" />
+                    <div className="p-3 bg-primary-500/20 rounded-full">
+                      <TrendingUp className="w-8 h-8 text-primary-400" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-white/80 mb-2">
@@ -404,7 +404,7 @@ const InvestorDashboard = () => {
                         key={results?.iai}
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="text-3xl font-bold text-blue-400"
+                        className="text-3xl font-bold text-primary-400"
                       >
                         {isAnalyzing ? "..." : `${results?.iai || 0}%`}
                       </motion.p>
@@ -412,10 +412,10 @@ const InvestorDashboard = () => {
                   </div>
                 </AnimatedCard>
 
-                <AnimatedCard className="bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/30 hover:from-green-500/30 hover:to-green-600/30 transition-all duration-300">
+                <AnimatedCard className="bg-gradient-to-br from-accent-500/20 to-accent-600/20 border-accent-500/30 hover:from-accent-500/30 hover:to-accent-600/30 transition-all duration-300">
                   <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="p-3 bg-green-500/20 rounded-full">
-                      <Shield className="w-8 h-8 text-green-400" />
+                    <div className="p-3 bg-accent-500/20 rounded-full">
+                      <Shield className="w-8 h-8 text-accent-400" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-white/80 mb-2">
@@ -425,7 +425,7 @@ const InvestorDashboard = () => {
                         key={results?.ss}
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="text-3xl font-bold text-green-400"
+                        className="text-3xl font-bold text-accent-400"
                       >
                         {isAnalyzing ? "..." : results?.ss || 0}
                       </motion.p>
@@ -634,7 +634,7 @@ const InvestorDashboard = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:from-blue-500/30 hover:to-purple-600/30 transition-all duration-300"
+                className="bg-gradient-to-br from-primary-500/20 to-accent-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:from-primary-500/30 hover:to-accent-600/30 transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
@@ -754,7 +754,7 @@ const InvestorDashboard = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => navigate("/market")}
-                      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-3"
+                      className="w-full bg-gradient-to-r from-accent-500 to-primary-600 text-white p-4 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300 flex items-center justify-center gap-3"
                     >
                       <div className="flex flex-col items-center">
                         <Target className="w-8 h-8 mb-2" />

@@ -169,7 +169,7 @@ const InvestmentPortfolio = () => {
       case "paused":
         return <Clock className="w-4 h-4 text-yellow-400" />;
       case "completed":
-        return <Target className="w-4 h-4 text-blue-400" />;
+        return <Target className="w-4 h-4 text-primary-400" />;
       default:
         return <AlertTriangle className="w-4 h-4 text-red-400" />;
     }
@@ -182,12 +182,12 @@ const InvestmentPortfolio = () => {
       {
         data: Object.values(stats?.sectorDistribution || {}),
         backgroundColor: [
-          "#3B82F6",
-          "#10B981",
-          "#F59E0B",
-          "#EF4444",
-          "#8B5CF6",
-          "#06B6D4",
+          "#1b4332",
+          "#2d6d4f",
+          "#52ba7b",
+          "#8dd5a7",
+          "#bce7cc",
+          "#dcf4e4",
         ],
         borderWidth: 0,
         hoverOffset: 10,
@@ -205,7 +205,7 @@ const InvestmentPortfolio = () => {
           stats?.riskDistribution.medium || 0,
           stats?.riskDistribution.high || 0,
         ],
-        backgroundColor: ["#10B981", "#F59E0B", "#EF4444"],
+        backgroundColor: ["#2d6d4f", "#F59E0B", "#EF4444"],
         borderWidth: 0,
         hoverOffset: 10,
       },
@@ -244,37 +244,37 @@ const InvestmentPortfolio = () => {
         transition={{ duration: 0.6 }}
         className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
       >
-        <AnimatedCard className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-blue-500/30">
+        <AnimatedCard className="bg-gradient-to-br from-primary-500/20 to-primary-600/20 border-primary-500/30">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-white/80 mb-1">إجمالي الاستثمارات</p>
-              <p className="text-2xl font-bold text-blue-400">
+              <p className="text-2xl font-bold text-primary-400">
                 {stats?.totalInvestments || 0}
               </p>
               <p className="text-xs text-white/60">استثمار نشط</p>
             </div>
-            <div className="p-3 bg-blue-500/20 rounded-full">
-              <BarChart3 className="w-6 h-6 text-blue-400" />
+            <div className="p-3 bg-primary-500/20 rounded-full">
+              <BarChart3 className="w-6 h-6 text-primary-400" />
             </div>
           </div>
         </AnimatedCard>
 
-        <AnimatedCard className="bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/30">
+        <AnimatedCard className="bg-gradient-to-br from-accent-500/20 to-accent-600/20 border-accent-500/30">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-white/80 mb-1">القيمة الإجمالية</p>
-              <p className="text-2xl font-bold text-green-400">
+              <p className="text-2xl font-bold text-accent-400">
                 {formatCurrency(stats?.totalValue || 0)}
               </p>
               <p className="text-xs text-white/60">قيمة المحفظة</p>
             </div>
-            <div className="p-3 bg-green-500/20 rounded-full">
-              <DollarSign className="w-6 h-6 text-green-400" />
+            <div className="p-3 bg-accent-500/20 rounded-full">
+              <DollarSign className="w-6 h-6 text-accent-400" />
             </div>
           </div>
         </AnimatedCard>
 
-        <AnimatedCard className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-purple-500/30">
+        <AnimatedCard className="bg-gradient-to-br from-light-500/20 to-light-600/20 border-light-500/30">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-white/80 mb-1">متوسط العائد</p>
@@ -287,7 +287,7 @@ const InvestmentPortfolio = () => {
               </p>
               <p className="text-xs text-white/60">عائد المحفظة</p>
             </div>
-            <div className="p-3 bg-purple-500/20 rounded-full">
+            <div className="p-3 bg-light-500/20 rounded-full">
               {stats?.averageROI >= 0 ? (
                 <TrendingUp className="w-6 h-6 text-green-400" />
               ) : (
@@ -325,7 +325,7 @@ const InvestmentPortfolio = () => {
         <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20">
           <div className="p-6">
             <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-              <PieChart className="w-6 h-6 text-blue-400" />
+              <PieChart className="w-6 h-6 text-primary-400" />
               توزيع القطاعات
             </h3>
             <div className="h-64">
@@ -355,14 +355,14 @@ const InvestmentPortfolio = () => {
       >
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-semibold text-white flex items-center gap-3">
-            <BarChart3 className="w-6 h-6 text-blue-400" />
+            <BarChart3 className="w-6 h-6 text-primary-400" />
             استثماراتي
           </h3>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+            className="flex items-center gap-2 bg-gradient-to-r from-accent-500 to-primary-600 text-white px-4 py-2 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300"
           >
             <Plus className="w-4 h-4" />
             إضافة استثمار
@@ -399,9 +399,9 @@ const InvestmentPortfolio = () => {
                           setSelectedInvestment(investment);
                           setShowDetailsModal(true);
                         }}
-                        className="p-2 bg-blue-500/20 rounded-lg hover:bg-blue-500/30 transition-colors"
+                        className="p-2 bg-primary-500/20 rounded-lg hover:bg-primary-500/30 transition-colors"
                       >
-                        <Eye className="w-4 h-4 text-blue-400" />
+                        <Eye className="w-4 h-4 text-primary-400" />
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.1 }}
@@ -493,7 +493,7 @@ const InvestmentPortfolio = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowAddModal(true)}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+              className="bg-gradient-to-r from-accent-500 to-primary-600 text-white px-6 py-3 rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300"
             >
               إضافة استثمار جديد
             </motion.button>
@@ -535,7 +535,7 @@ const InvestmentPortfolio = () => {
                           name: e.target.value,
                         })
                       }
-                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       placeholder="مثال: مصنع تعبئة الأسماك"
                       required
                     />
@@ -553,7 +553,7 @@ const InvestmentPortfolio = () => {
                           sector: e.target.value,
                         })
                       }
-                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       required
                     >
                       <option value="">اختر القطاع</option>
@@ -583,7 +583,7 @@ const InvestmentPortfolio = () => {
                           initialAmount: e.target.value,
                         })
                       }
-                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       placeholder="100000"
                       required
                     />
@@ -601,7 +601,7 @@ const InvestmentPortfolio = () => {
                           riskLevel: e.target.value,
                         })
                       }
-                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="منخفض">منخفض</option>
                       <option value="منخفض إلى متوسط">منخفض إلى متوسط</option>
@@ -624,7 +624,7 @@ const InvestmentPortfolio = () => {
                           timeline: e.target.value,
                         })
                       }
-                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       placeholder="مثال: 3-5 سنوات"
                       required
                     />
@@ -642,7 +642,7 @@ const InvestmentPortfolio = () => {
                           region: e.target.value,
                         })
                       }
-                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="صلالة">صلالة</option>
                       <option value="مرباط">مرباط</option>
@@ -665,7 +665,7 @@ const InvestmentPortfolio = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="flex-1 p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                    className="flex-1 p-3 bg-gradient-to-r from-accent-500 to-primary-600 text-white rounded-xl hover:from-accent-600 hover:to-primary-700 transition-all duration-300"
                   >
                     إضافة الاستثمار
                   </motion.button>

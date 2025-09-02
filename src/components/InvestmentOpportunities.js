@@ -377,13 +377,13 @@ const InvestmentOpportunities = () => {
                         <div className="flex gap-2 flex-wrap">
                           <button
                             onClick={() => openCalculator(opportunity)}
-                            className="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm hover:bg-green-200 transition-colors"
+                            className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm hover:bg-primary-200 transition-colors"
                           >
                             حاسبة الأرباح
                           </button>
                           <button
                             onClick={() => openRatingModal(opportunity)}
-                            className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200 transition-colors"
+                            className="px-3 py-1 bg-accent-100 text-accent-700 rounded-full text-sm hover:bg-accent-200 transition-colors"
                           >
                             قيم هذه الفرصة
                           </button>
@@ -391,7 +391,7 @@ const InvestmentOpportunities = () => {
                             onClick={() =>
                               handleAddToPortfolio(opportunity, sector.name)
                             }
-                            className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm hover:bg-purple-200 transition-colors"
+                            className="px-3 py-1 bg-light-300 text-primary-800 rounded-full text-sm hover:bg-light-400 transition-colors"
                           >
                             إضافة للمحفظة
                           </button>
