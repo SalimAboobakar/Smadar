@@ -141,7 +141,7 @@ const AdminDashboard = () => {
                   </div>
                   لوحة المدير
                 </h1>
-                <p className="text-white/70">إدارة شاملة لمنصة تدوم</p>
+                <p className="text-white/70">إدارة شاملة لمنصة يدوم</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -253,7 +253,7 @@ const AdminDashboard = () => {
               {/* Projects Chart */}
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                 <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                  <BarChart3 className="w-6 h-6 text-blue-400" />
+                  <BarChart3 className="w-6 h-6 text-accent-400" />
                   نمو المشاريع
                 </h3>
                 <div className="h-64">
@@ -306,7 +306,7 @@ const AdminDashboard = () => {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-semibold text-white flex items-center gap-2">
-                  <Database className="w-6 h-6 text-blue-400" />
+                  <Database className="w-6 h-6 text-accent-400" />
                   إدارة المشاريع
                 </h3>
                 <div className="flex items-center gap-4">
@@ -366,7 +366,7 @@ const AdminDashboard = () => {
                                 ? "bg-green-500/20 text-green-400"
                                 : project.status === "قيد المراجعة"
                                 ? "bg-yellow-500/20 text-yellow-400"
-                                : "bg-primary-500/20 text-blue-400"
+                                : "bg-primary-500/20 text-accent-400"
                             }`}
                           >
                             {project.status}
@@ -385,7 +385,7 @@ const AdminDashboard = () => {
                               whileTap={{ scale: 0.9 }}
                               className="p-2 bg-primary-500/20 rounded-lg hover:bg-primary-500/30 transition-colors"
                             >
-                              <Eye className="w-4 h-4 text-blue-400" />
+                              <Eye className="w-4 h-4 text-accent-400" />
                             </motion.button>
                             <motion.button
                               whileHover={{ scale: 1.1 }}

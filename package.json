@@ -1,7 +1,7 @@
 {
   "name": "tadawom-platform",
   "version": "1.0.0",
-  "description": "منصة تدوم - منصة ذكاء استثماري بلمسة المجتمع",
+  "description": "منصة يدوم - منصة ذكاء استثماري بلمسة المجتمع",
   "private": true,
   "dependencies": {
     "@google/generative-ai": "^0.2.1",

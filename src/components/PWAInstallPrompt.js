@@ -175,7 +175,7 @@ const PWAInstallPrompt = () => {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 {instructions.icon}
-                <h3 className="text-white font-bold text-lg">ثبت منصة تدوم</h3>
+                <h3 className="text-white font-bold text-lg">ثبت منصة يدوم</h3>
               </div>
               <button
                 onClick={handleDismiss}
@@ -188,7 +188,7 @@ const PWAInstallPrompt = () => {
             {/* المحتوى */}
             <div className="mb-6">
               <p className="text-white/90 mb-4 text-sm leading-relaxed">
-                احصل على تجربة أفضل مع تطبيق منصة تدوم. الوصول السريع،
+                احصل على تجربة أفضل مع تطبيق منصة يدوم. الوصول السريع،
                 الإشعارات، والعمل بدون إنترنت.
               </p>
 
@@ -233,7 +233,7 @@ const PWAInstallPrompt = () => {
                   <ul className="text-white/80 text-xs space-y-1">
                     {instructions.steps.map((step, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <span className="text-blue-300 font-bold">
+                        <span className="text-accent-300 font-bold">
                           {index + 1}.
                         </span>
                         <span>{step}</span>

@@ -180,7 +180,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
                 transition={{ delay: 1.2 + index * 0.1, duration: 0.8 }}
               >
                 <motion.div
-                  className="h-full bg-gradient-to-r from-green-500 to-blue-500"
+                  className="h-full bg-gradient-to-r from-green-500 to-accent-500"
                   initial={{ width: 0 }}
                   animate={{ width: `${project.roi}%` }}
                   transition={{ delay: 1.4 + index * 0.1, duration: 1 }}
@@ -288,7 +288,7 @@ const MarketAnalysis = ({ marketData, formatCurrency }) => {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Target className="w-5 h-5 text-blue-300 mt-1" />
+              <Target className="w-5 h-5 text-accent-300 mt-1" />
               <div>
                 <p className="font-semibold">استقرار في القطاعات التقليدية</p>
                 <p className="text-white/80 text-sm">

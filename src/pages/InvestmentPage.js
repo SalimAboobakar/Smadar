@@ -100,7 +100,7 @@ const InvestmentPage = () => {
       </div>
 
       {/* إحصائيات سريعة */}
-      <div className="bg-gradient-to-r from-blue-50 to-green-50 py-16">
+      <div className="bg-gradient-to-r from-primary-50 to-green-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
             ظفار في أرقام
@@ -206,12 +206,12 @@ const InvestmentPage = () => {
       </div>
 
       {/* دعوة للعمل */}
-      <div className="bg-gradient-to-r from-blue-600 to-green-600 py-16">
+      <div className="bg-gradient-to-r from-primary-600 to-green-600 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             ابدأ رحلتك الاستثمارية اليوم
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-primary-100 mb-8">
             استكشف أكثر من 20 فرصة استثمارية مربحة في مختلف القطاعات
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

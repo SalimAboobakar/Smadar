@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500/20 to-accent-500/20 px-6 py-3 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
             <Sparkles className="w-5 h-5 text-primary-400" />
             <span className="text-sm text-white/90 font-medium">
-              منصة تدوم - مستقبل الاستثمار الذكي
+              منصة يدوم - مستقبل الاستثمار الذكي
             </span>
           </div>
 

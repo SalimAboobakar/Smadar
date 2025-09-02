@@ -19,7 +19,7 @@ export const exportToPDF = async (projectData, results, votingData) => {
     // العنوان الرئيسي
     pdf.setFontSize(24);
     pdf.setTextColor(59, 130, 246); // أزرق
-    pdf.text("منصة تدوم - تقرير التحليل الاستثماري", pageWidth / 2, 20, {
+    pdf.text("منصة يدوم - تقرير التحليل الاستثماري", pageWidth / 2, 20, {
       align: "center",
     });
 
@@ -151,14 +151,14 @@ export const exportToPDF = async (projectData, results, votingData) => {
       { align: "center" }
     );
     pdf.text(
-      "منصة تدوم - ذكاء استثماري بلمسة المجتمع",
+      "منصة يدوم - ذكاء استثماري بلمسة المجتمع",
       pageWidth / 2,
       pageHeight - 5,
       { align: "center" }
     );
 
     // حفظ الملف
-    const fileName = `تقرير_تدوم_${projectData.region}_${
+    const fileName = `تقرير_يدوم_${projectData.region}_${
       projectData.projectType
     }_${Date.now()}.pdf`;
     pdf.save(fileName);
@@ -214,7 +214,7 @@ export const exportComprehensiveReport = async (
     // العنوان الرئيسي
     pdf.setFontSize(24);
     pdf.setTextColor(59, 130, 246);
-    pdf.text("منصة تدوم - تقرير شامل", pageWidth / 2, 20, { align: "center" });
+    pdf.text("منصة يدوم - تقرير شامل", pageWidth / 2, 20, { align: "center" });
 
     // إضافة المخططات كصور
     if (chartElements && chartElements.length > 0) {
@@ -235,7 +235,7 @@ export const exportComprehensiveReport = async (
     }
 
     // حفظ الملف
-    const fileName = `تقرير_شامل_تدوم_${Date.now()}.pdf`;
+    const fileName = `تقرير_شامل_يدوم_${Date.now()}.pdf`;
     pdf.save(fileName);
 
     return true;

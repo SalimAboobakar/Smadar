@@ -132,7 +132,7 @@ const MobileNavigation = () => {
                   </div>
                   <div>
                     <h2 className="text-lg font-bold text-gray-900">
-                      منصة تدوم
+                      منصة يدوم
                     </h2>
                     <p className="text-sm text-gray-600">ذكاء استثماري</p>
                   </div>
@@ -177,7 +177,7 @@ const MobileNavigation = () => {
                         onClick={() => handleNavigation(item.path)}
                         className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-right transition-colors ${
                           isActive(item.path)
-                            ? "bg-primary-50 text-primary-700 border-r-4 border-blue-600"
+                            ? "bg-primary-50 text-primary-700 border-r-4 border-primary-600"
                             : "text-gray-700 hover:bg-gray-100"
                         }`}
                       >
@@ -215,7 +215,7 @@ const MobileNavigation = () => {
               {/* معلومات إضافية */}
               <div className="p-4 bg-gray-50 border-t border-gray-200">
                 <div className="text-center">
-                  <p className="text-xs text-gray-500">منصة تدوم v1.0.0</p>
+                  <p className="text-xs text-gray-500">منصة يدوم v1.0.0</p>
                   <p className="text-xs text-gray-400 mt-1">
                     © 2024 جميع الحقوق محفوظة
                   </p>

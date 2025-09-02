@@ -1,5 +1,5 @@
 // Service Worker for Tadawom Platform PWA
-// خدمة العامل للتطبيق التقدمي لمنصة تدوم
+// خدمة العامل للتطبيق التقدمي لمنصة يدوم
 
 const CACHE_NAME = "tadawom-v1.0.0";
 const OFFLINE_URL = "/offline.html";
@@ -272,7 +272,7 @@ self.addEventListener("push", (event) => {
   console.log("Service Worker: Push received");
 
   const options = {
-    body: "لديك إشعار جديد من منصة تدوم",
+    body: "لديك إشعار جديد من منصة يدوم",
     icon: "/logo192.png",
     badge: "/logo192.png",
     vibrate: [100, 50, 100],
@@ -297,10 +297,10 @@ self.addEventListener("push", (event) => {
   if (event.data) {
     const data = event.data.json();
     options.body = data.body || options.body;
-    options.title = data.title || "منصة تدوم";
+    options.title = data.title || "منصة يدوم";
   }
 
-  event.waitUntil(self.registration.showNotification("منصة تدوم", options));
+  event.waitUntil(self.registration.showNotification("منصة يدوم", options));
 });
 
 // معالجة النقر على الإشعارات

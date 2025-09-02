@@ -62,7 +62,7 @@ const PlatformStats = () => {
       {/* إحصائيات عامة */}
       <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-600 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-accent-600 rounded-xl flex items-center justify-center">
             <BarChart3 className="w-5 h-5 text-white" />
           </div>
           <h3 className="text-xl font-semibold text-white">إحصائيات المنصة</h3>
@@ -77,7 +77,7 @@ const PlatformStats = () => {
             <div className="text-2xl font-bold text-primary-400">
               {stats?.totalVotes || 0}
             </div>
-            <div className="text-sm text-blue-300">إجمالي الأصوات</div>
+            <div className="text-sm text-accent-300">إجمالي الأصوات</div>
           </motion.div>
 
           <motion.div

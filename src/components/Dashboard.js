@@ -197,7 +197,7 @@ const Dashboard = () => {
                 <div className="p-2 bg-primary-500/20 rounded-xl">
                   <Brain className="w-8 h-8 lg:w-10 lg:h-10 text-primary-400" />
                 </div>
-                منصة تدوم
+                منصة يدوم
               </h1>
               <p className="text-white/70 text-base lg:text-lg">
                 منصة ذكاء استثماري بلمسة المجتمع
@@ -330,9 +330,9 @@ const Dashboard = () => {
             whileHover={{ scale: 1.03, y: -4 }}
             className="relative group"
           >
-            <div className="bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6 hover:border-primary-500/50 transition-all duration-500 shadow-2xl hover:shadow-blue-500/20">
+            <div className="bg-gradient-to-br from-slate-800/40 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-6 hover:border-primary-500/50 transition-all duration-500 shadow-2xl hover:shadow-primary-500/20">
               <div className="flex items-center justify-between mb-6">
-                <div className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300">
+                <div className="p-4 bg-gradient-to-br from-primary-500 to-accent-600 rounded-2xl shadow-lg group-hover:shadow-primary-500/30 transition-all duration-300">
                   <TrendingUp className="w-7 h-7 text-white" />
                 </div>
                 <div className="text-right flex-1 ml-4">
@@ -356,7 +356,7 @@ const Dashboard = () => {
                 </p>
                 <div className="w-full bg-slate-700/50 rounded-full h-2 overflow-hidden">
                   <motion.div
-                    className="bg-gradient-to-r from-blue-500 to-blue-400 h-2 rounded-full shadow-lg"
+                    className="bg-gradient-to-r from-primary-500 to-accent-400 h-2 rounded-full shadow-lg"
                     initial={{ width: 0 }}
                     animate={{ width: `${results?.iai || 0}%` }}
                     transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
@@ -579,7 +579,7 @@ const Dashboard = () => {
                             ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30 border-l-yellow-500"
                             : rec.type === "error"
                             ? "bg-red-500/20 text-red-300 border-red-500/30 border-l-red-500"
-                            : "bg-primary-500/20 text-blue-300 border-primary-500/30 border-l-blue-500"
+                            : "bg-primary-500/20 text-accent-300 border-primary-500/30 border-l-primary-500"
                         } hover:scale-105 transition-transform duration-200`}
                       >
                         <div className="flex items-start gap-3">
@@ -591,7 +591,7 @@ const Dashboard = () => {
                                 ? "bg-yellow-400"
                                 : rec.type === "error"
                                 ? "bg-red-400"
-                                : "bg-blue-400"
+                                : "bg-accent-400"
                             }`}
                           />
                           <p className="text-sm leading-relaxed">

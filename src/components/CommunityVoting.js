@@ -158,7 +158,7 @@ const CommunityVoting = ({ projectId, projectData }) => {
           >
             {votes.total}
           </motion.div>
-          <div className="text-sm text-blue-300 font-medium">
+          <div className="text-sm text-accent-300 font-medium">
             إجمالي الأصوات
           </div>
         </motion.div>

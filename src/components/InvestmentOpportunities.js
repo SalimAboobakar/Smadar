@@ -194,7 +194,7 @@ const InvestmentOpportunities = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+        <h1 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-primary-600 to-green-600 bg-clip-text text-transparent">
           الفرص الاستثمارية في محافظة ظفار
         </h1>
         <p className="text-center text-gray-600 text-lg">
@@ -583,7 +583,7 @@ const InvestmentOpportunities = () => {
               <ul className="space-y-3">
                 {tips.map((tip, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">💡</span>
+                    <span className="text-accent-500 mt-1">💡</span>
                     <span className="text-gray-700">{tip}</span>
                   </li>
                 ))}

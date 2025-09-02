@@ -239,7 +239,7 @@ const AIChatbot = ({ isOpen, onClose }) => {
                     <div
                       className={`text-xs mt-2 opacity-70 ${
                         message.role === "user"
-                          ? "text-blue-100"
+                          ? "text-primary-100"
                           : "text-white/50"
                       }`}
                     >

@@ -205,7 +205,7 @@ const InvestorDashboard = () => {
               <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
                   <div className="p-2 bg-primary-500/20 rounded-lg">
-                    <TrendingUp className="w-8 h-8 text-blue-400" />
+                    <TrendingUp className="w-8 h-8 text-accent-400" />
                   </div>
                   لوحة المستثمر
                 </h1>
@@ -489,7 +489,7 @@ const InvestorDashboard = () => {
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
                       <div className="p-2 bg-primary-500/20 rounded-lg">
-                        <BarChart3 className="w-6 h-6 text-blue-400" />
+                        <BarChart3 className="w-6 h-6 text-accent-400" />
                       </div>
                       توزيع الطلب
                     </h3>
@@ -561,7 +561,7 @@ const InvestorDashboard = () => {
                                   ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30 border-l-yellow-500"
                                   : rec.type === "error"
                                   ? "bg-red-500/20 text-red-300 border-red-500/30 border-l-red-500"
-                                  : "bg-primary-500/20 text-blue-300 border-primary-500/30 border-l-blue-500"
+                                  : "bg-primary-500/20 text-accent-300 border-primary-500/30 border-l-primary-500"
                               } hover:scale-105 transition-transform duration-200`}
                             >
                               <div className="flex items-start gap-3">
@@ -573,7 +573,7 @@ const InvestorDashboard = () => {
                                       ? "bg-yellow-400"
                                       : rec.type === "error"
                                       ? "bg-red-400"
-                                      : "bg-blue-400"
+                                      : "bg-accent-400"
                                   }`}
                                 />
                                 <p className="text-sm leading-relaxed">
@@ -639,7 +639,7 @@ const InvestorDashboard = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/20 rounded-xl">
-                      <Target className="w-8 h-8 text-blue-400" />
+                      <Target className="w-8 h-8 text-accent-400" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-white">
@@ -686,7 +686,7 @@ const InvestorDashboard = () => {
                     className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
                   >
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-blue-400 mb-2">
+                      <div className="text-3xl font-bold text-accent-400 mb-2">
                         285
                       </div>
                       <div className="text-sm text-white/70">مستثمر نشط</div>
@@ -736,8 +736,8 @@ const InvestorDashboard = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-primary-500/20 rounded-lg border border-primary-500/30">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-blue-300 text-sm">
+                      <div className="w-2 h-2 bg-accent-400 rounded-full"></div>
+                      <span className="text-accent-300 text-sm">
                         السياحة تسجل نمو 10.2% مع مليون زائر
                       </span>
                     </div>

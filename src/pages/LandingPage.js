@@ -241,7 +241,7 @@ const LandingPage = () => {
             اختر نوع المستخدم
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            منصة تدوم تقدم تجارب مخصصة لكل نوع من المستخدمين
+            منصة يدوم تقدم تجارب مخصصة لكل نوع من المستخدمين
           </p>
         </motion.div>
 
@@ -308,7 +308,7 @@ const LandingPage = () => {
         >
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold text-white mb-4">
-              مميزات منصة تدوم
+              مميزات منصة يدوم
             </h3>
             <p className="text-white/70">
               منصة شاملة تجمع بين الذكاء الاصطناعي ومشاركة المجتمع
@@ -340,7 +340,7 @@ const LandingPage = () => {
             ].map((feature, index) => (
               <div key={index} className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-500/20 rounded-full mb-4">
-                  <feature.icon className="w-6 h-6 text-blue-400" />
+                  <feature.icon className="w-6 h-6 text-accent-400" />
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2">
                   {feature.title}

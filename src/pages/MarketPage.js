@@ -307,18 +307,18 @@ const MarketPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-light-200 to-pink-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-light-200 to-pink-50 flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full"
+          className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full"
         />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-light-200 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-light-200 to-pink-50">
       {/* رأس الصفحة المذهل */}
       <div className="relative overflow-hidden bg-gradient-to-r from-primary-900 via-primary-800 to-accent-900">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -539,7 +539,7 @@ const MarketPage = () => {
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary-400 to-accent-400 rounded-full -translate-x-16 -translate-y-16" />
-              <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-br from-green-400 to-blue-400 rounded-full translate-x-12 translate-y-12" />
+              <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-br from-accent-400 to-primary-400 rounded-full translate-x-12 translate-y-12" />
             </div>
             <div className="relative mb-8">
               <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3 mb-2">

@@ -378,7 +378,7 @@ const VoterPage = () => {
                         ? "bg-green-500/20 text-green-400"
                         : project.status === "قيد المراجعة"
                         ? "bg-yellow-500/20 text-yellow-400"
-                        : "bg-primary-500/20 text-blue-400"
+                        : "bg-primary-500/20 text-accent-400"
                     }`}
                   >
                     {project.status}
@@ -485,7 +485,7 @@ const VoterPage = () => {
                       whileTap={{ scale: 0.9 }}
                       className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                     >
-                      <Share2 className="w-5 h-5 text-blue-400" />
+                      <Share2 className="w-5 h-5 text-accent-400" />
                     </motion.button>
                     <motion.button
                       whileHover={{ scale: 1.1 }}
@@ -519,7 +519,7 @@ const VoterPage = () => {
         >
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
             <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-              <BarChart3 className="w-6 h-6 text-blue-400" />
+              <BarChart3 className="w-6 h-6 text-accent-400" />
               توزيع أنواع المشاريع
             </h3>
             <div className="h-64">

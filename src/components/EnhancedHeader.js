@@ -39,7 +39,7 @@ const EnhancedHeader = () => {
       case "/dashboard":
         return "لوحة التحكم المحسنة";
       default:
-        return "منصة تدوم";
+        return "منصة يدوم";
     }
   };
 
@@ -84,7 +84,7 @@ const EnhancedHeader = () => {
                 <span className="text-white text-lg font-bold">ت</span>
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gray-900">منصة تدوم</h1>
+                <h1 className="text-xl font-bold text-gray-900">منصة يدوم</h1>
                 <p className="text-xs text-gray-600">
                   ذكاء استثماري بلمسة المجتمع
                 </p>
