@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // قواعد للتصويت المجتمعي - السماح بالقراءة والكتابة للجميع (للاستخدام بدون مصادقة)
+    match /communityVotes/{document} {
+      allow read, write: if true;
+    }
+    
+    // قواعد لنتائج التحليل - السماح بالقراءة والكتابة للجميع
+    match /analysisResults/{document} {
+      allow read, write: if true;
+    }
+    
+    // قواعد لتحليلات Gemini - السماح بالقراءة والكتابة للجميع
+    match /geminiAnalyses/{document} {
+      allow read, write: if true;
+    }
+    
+    // قواعد عامة - السماح بالقراءة والكتابة للجميع
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

@@ -1,0 +1,663 @@
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import {
+  Brain,
+  TrendingUp,
+  Users,
+  Shield,
+  BarChart3,
+  AlertTriangle,
+  Download,
+  ArrowLeft,
+  Target,
+  Star,
+} from "lucide-react";
+import { Doughnut, Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from "chart.js";
+import AnimatedCard from "../components/ui/AnimatedCard";
+import CommunityVoting from "../components/CommunityVoting";
+import GeminiIntegration from "../components/GeminiIntegration";
+import {
+  calculateIAI,
+  calculateSS,
+  calculateWeightedDemand,
+  getRecommendations,
+  getTopRisks,
+} from "../utils/calculations";
+import { projectTypes, targetAudiences } from "../data/dhofarData";
+import { exportToPDF } from "../services/pdfService";
+import ChatbotTrigger from "../components/ChatbotTrigger";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
+
+const InvestorDashboard = () => {
+  const navigate = useNavigate();
+  const [selectedRegion, setSelectedRegion] = useState("salalah");
+  const [selectedProjectType, setSelectedProjectType] = useState("hotels");
+  const [selectedAudience, setSelectedAudience] = useState("tourists");
+  const [investmentAmount, setInvestmentAmount] = useState(100000);
+  const [results, setResults] = useState(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [activeTab, setActiveTab] = useState("analysis");
+
+  useEffect(() => {
+    calculateResults();
+  }, [selectedRegion, selectedProjectType, selectedAudience, investmentAmount]);
+
+  const calculateResults = async () => {
+    setIsAnalyzing(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    const iai = calculateIAI(
+      selectedRegion,
+      selectedProjectType,
+      selectedAudience,
+      investmentAmount
+    );
+    const ss = calculateSS(selectedProjectType, investmentAmount);
+    const demand = calculateWeightedDemand(
+      selectedRegion,
+      selectedProjectType,
+      selectedAudience
+    );
+    const recommendations = getRecommendations(
+      iai,
+      ss,
+      selectedProjectType,
+      selectedRegion
+    );
+    const risks = getTopRisks(selectedProjectType, selectedAudience);
+
+    setResults({
+      iai,
+      ss,
+      demand,
+      recommendations,
+      risks,
+    });
+
+    setIsAnalyzing(false);
+  };
+
+  const generateProjectId = () => {
+    return `${selectedRegion}_${selectedProjectType}_${selectedAudience}_${Date.now()}`;
+  };
+
+  const demandChartData = {
+    labels: ["الزوار", "السكان المحليون"],
+    datasets: [
+      {
+        data: [
+          Math.round(
+            results?.demand * projectTypes[selectedProjectType].visitorWeight ||
+              0
+          ),
+          Math.round(
+            results?.demand * projectTypes[selectedProjectType].localWeight || 0
+          ),
+        ],
+        backgroundColor: ["#3B82F6", "#10B981"],
+        borderWidth: 0,
+        hoverOffset: 10,
+      },
+    ],
+  };
+
+  const risksChartData = {
+    labels: results?.risks.map((risk) => risk.name) || [],
+    datasets: [
+      {
+        label: "مستوى المخاطر",
+        data:
+          results?.risks.map((risk) =>
+            risk.level === "high" ? 3 : risk.level === "medium" ? 2 : 1
+          ) || [],
+        backgroundColor: ["#EF4444", "#F59E0B", "#10B981"],
+        borderRadius: 8,
+        borderSkipped: false,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",
+          font: {
+            size: 14,
+          },
+        },
+      },
+    },
+  };
+
+  const handleExportPDF = async () => {
+    try {
+      const projectData = {
+        region: selectedRegion,
+        projectType: selectedProjectType,
+        audience: selectedAudience,
+        investment: investmentAmount,
+      };
+
+      const votingData = {
+        up: 0,
+        down: 0,
+        total: 0,
+      };
+
+      await exportToPDF(projectData, results, votingData);
+    } catch (error) {
+      console.error("خطأ في تصدير PDF:", error);
+      alert("حدث خطأ في تصدير التقرير. يرجى المحاولة لاحقاً.");
+    }
+  };
+
+  const tabs = [
+    { id: "analysis", name: "التحليل", icon: BarChart3 },
+    { id: "portfolio", name: "المحفظة", icon: TrendingUp },
+    { id: "market", name: "السوق", icon: Target },
+    { id: "ai", name: "الذكاء الاصطناعي", icon: Brain },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="bg-white/10 backdrop-blur-sm border-b border-white/20"
+      >
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/")}
+                className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5 text-white" />
+              </motion.button>
+              <div>
+                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                  <div className="p-2 bg-blue-500/20 rounded-lg">
+                    <TrendingUp className="w-8 h-8 text-blue-400" />
+                  </div>
+                  لوحة المستثمر
+                </h1>
+                <p className="text-white/70">أدوات التحليل والاستثمار الذكية</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleExportPDF}
+                className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+              >
+                <Download className="w-5 h-5" />
+                تصدير التقرير
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Navigation Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-2 mb-8 border border-white/20"
+        >
+          <div className="flex flex-wrap gap-2">
+            {tabs.map((tab) => (
+              <motion.button
+                key={tab.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 ${
+                  activeTab === tab.id
+                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                <tab.icon className="w-5 h-5" />
+                {tab.name}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Content based on active tab */}
+        <AnimatePresence mode="wait">
+          {activeTab === "analysis" && (
+            <motion.div
+              key="analysis"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Project Selection */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 lg:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 mb-8"
+              >
+                <h2 className="text-xl lg:text-2xl font-semibold text-white mb-6 flex items-center gap-3">
+                  <div className="p-2 bg-blue-500/20 rounded-lg">
+                    <Target className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400" />
+                  </div>
+                  اختيار المشروع
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-white/80">
+                      المنطقة
+                    </label>
+                    <select
+                      value={selectedRegion}
+                      onChange={(e) => setSelectedRegion(e.target.value)}
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                    >
+                      <option value="salalah">صلالة</option>
+                      <option value="mirbat">مرباط</option>
+                      <option value="taqah">طاقة</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-white/80">
+                      نوع المشروع
+                    </label>
+                    <select
+                      value={selectedProjectType}
+                      onChange={(e) => setSelectedProjectType(e.target.value)}
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                    >
+                      {Object.entries(projectTypes).map(([key, type]) => (
+                        <option key={key} value={key}>
+                          {type.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-white/80">
+                      الجمهور المستهدف
+                    </label>
+                    <select
+                      value={selectedAudience}
+                      onChange={(e) => setSelectedAudience(e.target.value)}
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm hover:bg-white/15 transition-all duration-200"
+                    >
+                      {Object.entries(targetAudiences).map(
+                        ([key, audience]) => (
+                          <option key={key} value={key}>
+                            {audience.name}
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-white/80">
+                      مبلغ الاستثمار (ريال)
+                    </label>
+                    <input
+                      type="number"
+                      value={investmentAmount}
+                      onChange={(e) =>
+                        setInvestmentAmount(Number(e.target.value))
+                      }
+                      className="w-full p-3 lg:p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm placeholder-white/50 hover:bg-white/15 transition-all duration-200"
+                      placeholder="100000"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Loading State */}
+              <AnimatePresence>
+                {isAnalyzing && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-8 border border-white/20 text-center"
+                  >
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full mx-auto mb-4"
+                    />
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      جاري التحليل...
+                    </h3>
+                    <p className="text-white/70">
+                      نقوم بتحليل البيانات وتقييم الجدوى الاستثمارية
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Main Metrics */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8"
+              >
+                <AnimatedCard className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-blue-500/30 hover:from-blue-500/30 hover:to-blue-600/30 transition-all duration-300">
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="p-3 bg-blue-500/20 rounded-full">
+                      <TrendingUp className="w-8 h-8 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white/80 mb-2">
+                        مؤشر الجاذبية الاستثمارية
+                      </p>
+                      <motion.p
+                        key={results?.iai}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="text-3xl font-bold text-blue-400"
+                      >
+                        {isAnalyzing ? "..." : `${results?.iai || 0}%`}
+                      </motion.p>
+                    </div>
+                  </div>
+                </AnimatedCard>
+
+                <AnimatedCard className="bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/30 hover:from-green-500/30 hover:to-green-600/30 transition-all duration-300">
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="p-3 bg-green-500/20 rounded-full">
+                      <Shield className="w-8 h-8 text-green-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white/80 mb-2">
+                        مؤشر الاستدامة
+                      </p>
+                      <motion.p
+                        key={results?.ss}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="text-3xl font-bold text-green-400"
+                      >
+                        {isAnalyzing ? "..." : results?.ss || 0}
+                      </motion.p>
+                    </div>
+                  </div>
+                </AnimatedCard>
+
+                <AnimatedCard className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-purple-500/30 hover:from-purple-500/30 hover:to-purple-600/30 transition-all duration-300">
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="p-3 bg-purple-500/20 rounded-full">
+                      <Users className="w-8 h-8 text-purple-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white/80 mb-2">
+                        الطلب المتوقع
+                      </p>
+                      <motion.p
+                        key={results?.demand}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="text-3xl font-bold text-purple-400"
+                      >
+                        {isAnalyzing
+                          ? "..."
+                          : (results?.demand || 0).toLocaleString()}
+                      </motion.p>
+                    </div>
+                  </div>
+                </AnimatedCard>
+
+                <AnimatedCard className="bg-gradient-to-br from-red-500/20 to-red-600/20 border-red-500/30 hover:from-red-500/30 hover:to-red-600/30 transition-all duration-300">
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="p-3 bg-red-500/20 rounded-full">
+                      <AlertTriangle className="w-8 h-8 text-red-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white/80 mb-2">
+                        عدد المخاطر
+                      </p>
+                      <motion.p
+                        key={results?.risks?.length}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="text-3xl font-bold text-red-400"
+                      >
+                        {isAnalyzing ? "..." : results?.risks?.length || 0}
+                      </motion.p>
+                    </div>
+                  </div>
+                </AnimatedCard>
+              </motion.div>
+
+              {/* Charts and Analysis */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8"
+              >
+                <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                      <div className="p-2 bg-blue-500/20 rounded-lg">
+                        <BarChart3 className="w-6 h-6 text-blue-400" />
+                      </div>
+                      توزيع الطلب
+                    </h3>
+                    <div className="h-64 relative">
+                      <Doughnut data={demandChartData} options={chartOptions} />
+                      {results?.demand && (
+                        <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                          <p className="text-sm text-white/80">إجمالي الطلب</p>
+                          <p className="text-lg font-bold text-white">
+                            {results.demand.toLocaleString()}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </AnimatedCard>
+
+                <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                      <div className="p-2 bg-red-500/20 rounded-lg">
+                        <AlertTriangle className="w-6 h-6 text-red-400" />
+                      </div>
+                      تحليل المخاطر
+                    </h3>
+                    <div className="h-64 relative">
+                      <Bar data={risksChartData} options={chartOptions} />
+                      {results?.risks && results.risks.length > 0 && (
+                        <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                          <p className="text-sm text-white/80">أعلى مخاطر</p>
+                          <p className="text-lg font-bold text-red-400">
+                            {results.risks[0]?.name || "غير محدد"}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </AnimatedCard>
+              </motion.div>
+
+              {/* Recommendations and Community Voting */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8"
+              >
+                <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                      <div className="p-2 bg-yellow-500/20 rounded-lg">
+                        <Star className="w-6 h-6 text-yellow-400" />
+                      </div>
+                      التوصيات الذكية
+                    </h3>
+                    <div className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar">
+                      <AnimatePresence>
+                        {results?.recommendations?.length > 0 ? (
+                          results.recommendations.map((rec, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className={`p-4 rounded-xl border-l-4 ${
+                                rec.type === "success"
+                                  ? "bg-green-500/20 text-green-300 border-green-500/30 border-l-green-500"
+                                  : rec.type === "warning"
+                                  ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/30 border-l-yellow-500"
+                                  : rec.type === "error"
+                                  ? "bg-red-500/20 text-red-300 border-red-500/30 border-l-red-500"
+                                  : "bg-blue-500/20 text-blue-300 border-blue-500/30 border-l-blue-500"
+                              } hover:scale-105 transition-transform duration-200`}
+                            >
+                              <div className="flex items-start gap-3">
+                                <div
+                                  className={`w-2 h-2 rounded-full mt-2 ${
+                                    rec.type === "success"
+                                      ? "bg-green-400"
+                                      : rec.type === "warning"
+                                      ? "bg-yellow-400"
+                                      : rec.type === "error"
+                                      ? "bg-red-400"
+                                      : "bg-blue-400"
+                                  }`}
+                                />
+                                <p className="text-sm leading-relaxed">
+                                  {rec.message}
+                                </p>
+                              </div>
+                            </motion.div>
+                          ))
+                        ) : (
+                          <div className="text-center py-8 text-white/60">
+                            <Star className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                            <p>لا توجد توصيات متاحة حالياً</p>
+                          </div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </div>
+                </AnimatedCard>
+
+                <div className="flex flex-col">
+                  <CommunityVoting
+                    projectId={generateProjectId()}
+                    projectData={{
+                      region: selectedRegion,
+                      projectType: selectedProjectType,
+                      audience: selectedAudience,
+                      investment: investmentAmount,
+                    }}
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+
+          {activeTab === "portfolio" && (
+            <motion.div
+              key="portfolio"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+            >
+              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                <TrendingUp className="w-6 h-6 text-green-400" />
+                محفظة الاستثمارات
+              </h3>
+              <p className="text-white/70">قريباً - إدارة محفظة الاستثمارات</p>
+            </motion.div>
+          )}
+
+          {activeTab === "market" && (
+            <motion.div
+              key="market"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+            >
+              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                <Target className="w-6 h-6 text-blue-400" />
+                تحليل السوق
+              </h3>
+              <p className="text-white/70">قريباً - تحليل السوق والاتجاهات</p>
+            </motion.div>
+          )}
+
+          {activeTab === "ai" && (
+            <motion.div
+              key="ai"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <GeminiIntegration
+                projectData={{
+                  region: selectedRegion,
+                  projectType: selectedProjectType,
+                  audience: selectedAudience,
+                  investment: investmentAmount,
+                }}
+                results={results}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* AI Chatbot Trigger */}
+      <ChatbotTrigger />
+    </div>
+  );
+};
+
+export default InvestorDashboard;
