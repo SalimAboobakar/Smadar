@@ -49,6 +49,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import MarketAnalysis from "../components/MarketAnalysis";
+import PartnerFooter from "../components/PartnerFooter";
 
 const MarketPage = () => {
   const [selectedTimeframe, setSelectedTimeframe] = useState("3months");
@@ -900,6 +901,9 @@ const MarketPage = () => {
           formatCurrency={formatCurrency}
         />
       </div>
+
+      {/* Partner Footer */}
+      <PartnerFooter />
     </div>
   );
 };

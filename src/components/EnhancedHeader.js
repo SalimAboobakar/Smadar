@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import MobileNavigation from "./MobileNavigation";
 import NotificationSystem from "./NotificationSystem";
+import Logo from "./ui/Logo";
 
 const EnhancedHeader = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -78,18 +79,8 @@ const EnhancedHeader = () => {
             {/* القائمة المحمولة */}
             <MobileNavigation />
 
-            {/* شعار المنصة */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-lg font-bold">ت</span>
-              </div>
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gray-900">منصة يدوم</h1>
-                <p className="text-xs text-gray-600">
-                  ذكاء استثماري بلمسة المجتمع
-                </p>
-              </div>
-            </div>
+            {/* شعار المنصة المحسن */}
+            <Logo size="medium" animated={true} showText={true} />
 
             {/* عنوان الصفحة الحالية */}
             <div className="hidden md:block ml-8">

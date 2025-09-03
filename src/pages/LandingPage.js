@@ -19,6 +19,7 @@ import {
 import HeroSection from "../components/HeroSection";
 import ChatbotTrigger from "../components/ChatbotTrigger";
 import PWAInstallPrompt from "../components/PWAInstallPrompt";
+import PartnerFooter from "../components/PartnerFooter";
 import AdvancedSearch from "../components/AdvancedSearch";
 
 const LandingPage = () => {
@@ -355,6 +356,9 @@ const LandingPage = () => {
       {/* AI Chatbot Trigger */}
       <ChatbotTrigger />
       <PWAInstallPrompt />
+
+      {/* Partner Footer */}
+      <PartnerFooter />
     </div>
   );
 };

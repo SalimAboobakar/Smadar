@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import InvestmentOpportunities from "../components/InvestmentOpportunities";
+import PartnerFooter from "../components/PartnerFooter";
 import { uploadAllDataToFirebase } from "../services/firebaseService";
 import SuccessMessage from "../components/ui/SuccessMessage";
 import ErrorMessage from "../components/ui/ErrorMessage";
@@ -230,6 +231,9 @@ const InvestmentPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Partner Footer */}
+      <PartnerFooter />
     </div>
   );
 };
