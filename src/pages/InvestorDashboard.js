@@ -25,13 +25,16 @@ import {
   ArcElement,
 } from "chart.js";
 import AnimatedCard from "../components/ui/AnimatedCard";
+import MathTooltip from "../components/ui/MathTooltip";
 import CommunityVoting from "../components/CommunityVoting";
 import GeminiIntegration from "../components/GeminiIntegration";
 import InvestmentPortfolio from "../components/InvestmentPortfolio";
 import AIInvestmentAdvisor from "../components/AIInvestmentAdvisor";
+import { getEquationData } from "../utils/mathEquations";
 import {
   calculateIAI,
   calculateSS,
+  calculateEnhancedConfidenceRate,
   calculateWeightedDemand,
   getRecommendations,
   getTopRisks,
@@ -96,6 +99,7 @@ const InvestorDashboard = () => {
       selectedRegion
     );
     const risks = getTopRisks(selectedProjectType, selectedAudience);
+    const confidence = calculateEnhancedConfidenceRate(iai, ss, selectedProjectType, selectedRegion);
 
     setResults({
       iai,
@@ -103,6 +107,7 @@ const InvestorDashboard = () => {
       demand,
       recommendations,
       risks,
+      confidence,
     });
 
     setIsAnalyzing(false);
@@ -400,47 +405,61 @@ const InvestorDashboard = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8"
               >
-                <AnimatedCard className="bg-gradient-to-br from-primary-500/20 to-primary-600/20 border-primary-500/30 hover:from-primary-500/30 hover:to-primary-600/30 transition-all duration-300">
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="p-3 bg-primary-500/20 rounded-full">
-                      <TrendingUp className="w-8 h-8 text-primary-400" />
+                <MathTooltip 
+                  equation={getEquationData('iai').equation}
+                  title={getEquationData('iai').title}
+                  description={getEquationData('iai').description}
+                  variables={getEquationData('iai').variables}
+                >
+                  <AnimatedCard className="bg-gradient-to-br from-primary-500/20 to-primary-600/20 border-primary-500/30 hover:from-primary-500/30 hover:to-primary-600/30 transition-all duration-300">
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="p-3 bg-primary-500/20 rounded-full">
+                        <TrendingUp className="w-8 h-8 text-primary-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80 mb-2">
+                          مؤشر الجاذبية الاستثمارية
+                        </p>
+                        <motion.p
+                          key={results?.iai}
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="text-3xl font-bold text-primary-400"
+                        >
+                          {isAnalyzing ? "..." : `${results?.iai || 0}%`}
+                        </motion.p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-white/80 mb-2">
-                        مؤشر الجاذبية الاستثمارية
-                      </p>
-                      <motion.p
-                        key={results?.iai}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="text-3xl font-bold text-primary-400"
-                      >
-                        {isAnalyzing ? "..." : `${results?.iai || 0}%`}
-                      </motion.p>
-                    </div>
-                  </div>
-                </AnimatedCard>
+                  </AnimatedCard>
+                </MathTooltip>
 
-                <AnimatedCard className="bg-gradient-to-br from-accent-500/20 to-accent-600/20 border-accent-500/30 hover:from-accent-500/30 hover:to-accent-600/30 transition-all duration-300">
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="p-3 bg-accent-500/20 rounded-full">
-                      <Shield className="w-8 h-8 text-accent-400" />
+                <MathTooltip 
+                  equation={getEquationData('ss').equation}
+                  title={getEquationData('ss').title}
+                  description={getEquationData('ss').description}
+                  variables={getEquationData('ss').variables}
+                >
+                  <AnimatedCard className="bg-gradient-to-br from-accent-500/20 to-accent-600/20 border-accent-500/30 hover:from-accent-500/30 hover:to-accent-600/30 transition-all duration-300">
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="p-3 bg-accent-500/20 rounded-full">
+                        <Shield className="w-8 h-8 text-accent-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80 mb-2">
+                          مؤشر الاستدامة
+                        </p>
+                        <motion.p
+                          key={results?.ss}
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="text-3xl font-bold text-accent-400"
+                        >
+                          {isAnalyzing ? "..." : results?.ss || 0}
+                        </motion.p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-white/80 mb-2">
-                        مؤشر الاستدامة
-                      </p>
-                      <motion.p
-                        key={results?.ss}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="text-3xl font-bold text-accent-400"
-                      >
-                        {isAnalyzing ? "..." : results?.ss || 0}
-                      </motion.p>
-                    </div>
-                  </div>
-                </AnimatedCard>
+                  </AnimatedCard>
+                </MathTooltip>
 
                 <AnimatedCard className="bg-gradient-to-br from-accent-500/20 to-accent-600/20 border-accent-500/30 hover:from-accent-500/30 hover:to-accent-600/30 transition-all duration-300">
                   <div className="flex flex-col items-center text-center space-y-3">
@@ -465,26 +484,33 @@ const InvestorDashboard = () => {
                   </div>
                 </AnimatedCard>
 
-                <AnimatedCard className="bg-gradient-to-br from-red-500/20 to-red-600/20 border-red-500/30 hover:from-red-500/30 hover:to-red-600/30 transition-all duration-300">
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="p-3 bg-red-500/20 rounded-full">
-                      <AlertTriangle className="w-8 h-8 text-red-400" />
+                <MathTooltip 
+                  equation={getEquationData('confidence').equation}
+                  title={getEquationData('confidence').title}
+                  description={getEquationData('confidence').description}
+                  variables={getEquationData('confidence').variables}
+                >
+                  <AnimatedCard className="bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/30 hover:from-green-500/30 hover:to-green-600/30 transition-all duration-300">
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      <div className="p-3 bg-green-500/20 rounded-full">
+                        <Target className="w-8 h-8 text-green-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80 mb-2">
+                          معدل الثقة
+                        </p>
+                        <motion.p
+                          key={results?.confidence}
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="text-3xl font-bold text-green-400"
+                        >
+                          {isAnalyzing ? "..." : `${results?.confidence || 0}%`}
+                        </motion.p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-white/80 mb-2">
-                        عدد المخاطر
-                      </p>
-                      <motion.p
-                        key={results?.risks?.length}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="text-3xl font-bold text-red-400"
-                      >
-                        {isAnalyzing ? "..." : results?.risks?.length || 0}
-                      </motion.p>
-                    </div>
-                  </div>
-                </AnimatedCard>
+                  </AnimatedCard>
+                </MathTooltip>
               </motion.div>
 
               {/* Charts and Analysis */}
