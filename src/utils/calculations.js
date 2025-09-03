@@ -124,7 +124,7 @@ export const calculatePurchasingPowerFactor = (region, projectType, targetAudien
 
 // حساب الطلب الموزون المحسن مع عوامل واقعية
 export const calculateEnhancedWeightedDemand = (region, projectType, targetAudience) => {
-  const regionData = dhofarRegions[region];
+  const regionData = dhofarRegions[region] || dhofarRegions.salalah; // fallback to salalah if region not found
   const projectData = projectTypes[projectType];
   const audienceData = targetAudiences[targetAudience];
   const economics = economicIndicators[region] || economicIndicators.salalah;
@@ -160,7 +160,7 @@ export const calculateEnhancedWeightedDemand = (region, projectType, targetAudie
 // حساب معامل الحوكمة المحسن
 export const calculateEnhancedGovernanceFactor = (projectType, region) => {
   const projectData = projectTypes[projectType];
-  const regionData = dhofarRegions[region];
+  const regionData = dhofarRegions[region] || dhofarRegions.salalah; // fallback to salalah if region not found
   const economics = economicIndicators[region] || economicIndicators.salalah;
 
   // عوامل التعقيد البيروقراطي (تقل مع نضج السوق)
@@ -185,7 +185,7 @@ export const calculateEnhancedIAI = (region, projectType, targetAudience, invest
   
   const projectData = projectTypes[projectType];
   const audienceData = targetAudiences[targetAudience];
-  const regionData = dhofarRegions[region];
+  const regionData = dhofarRegions[region] || dhofarRegions.salalah; // fallback to salalah if region not found
   const economics = economicIndicators[region] || economicIndicators.salalah;
   
   // 2. تطبيع المكونات (كل مكون بين 0-1) مع حدود واقعية
@@ -257,7 +257,7 @@ export const calculateEnhancedIAI = (region, projectType, targetAudience, invest
 export const calculateEnhancedSS = (projectType, investmentAmount = 100000, region) => {
   const projectData = projectTypes[projectType];
   const economics = economicIndicators[region] || economicIndicators.salalah;
-  const regionData = dhofarRegions[region];
+  const regionData = dhofarRegions[region] || dhofarRegions.salalah; // fallback to salalah if region not found
   
   // العائد المعدل حسب الظروف الاقتصادية
   const baseROI = projectData.avgROI;
@@ -460,7 +460,7 @@ export const calculateEnhancedConfidenceRate = (iai, ss, projectType, region) =>
   confidence += economics.marketMaturity * 0.15;
   
   // تأثير البنية التحتية
-  const regionData = dhofarRegions[region];
+  const regionData = dhofarRegions[region] || dhofarRegions.salalah; // fallback to salalah if region not found
   const infraScore = regionData.investmentData?.infrastructureScore || 7;
   confidence += (infraScore - 7) * 0.02;
   
