@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const TextGenerateEffect = ({ words, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,7 +18,7 @@ const TextGenerateEffect = ({ words, className = "" }) => {
         {words.split(" ").map((word, idx) => (
           <motion.span
             key={word + idx}
-            className="dark:text-white text-black"
+            className="text-white"
             variants={{
               hidden: { opacity: 0 },
               visible: { opacity: 1 },

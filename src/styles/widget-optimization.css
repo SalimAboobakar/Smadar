@@ -1,0 +1,316 @@
+/* 🎨 Widget Layout Optimization for يدوم Dashboard */
+
+/* Enhanced Grid System for Dashboard Widgets */
+.grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  align-items: stretch;
+}
+
+.grid-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.grid-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: stretch;
+}
+
+/* Dashboard Layout Improvements */
+.dashboard-section {
+  margin-bottom: 3rem;
+}
+
+.widget-container {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.metric-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Consistent Card Spacing */
+.card-spacing {
+  margin-bottom: 1.5rem;
+}
+
+.card-spacing:last-child {
+  margin-bottom: 0;
+}
+
+/* Chart Container Improvements */
+.chart-container {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Improved Analytics Section */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Better Spacing for Math Tooltips */
+.tooltip-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+.tooltip-wrapper + .tooltip-wrapper {
+  margin-left: 1rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .grid-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-metrics {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .grid-features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .widget-container {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .metric-card {
+    min-height: 150px;
+  }
+
+  .chart-container {
+    height: 250px;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-section {
+    margin-bottom: 2rem;
+  }
+
+  .metric-card-content {
+    padding: 1rem;
+  }
+
+  .chart-container {
+    height: 200px;
+  }
+}
+
+/* Enhanced Visual Rhythm */
+.rhythm-sections > * + * {
+  margin-top: 2rem;
+}
+
+.rhythm-content > * + * {
+  margin-top: 1rem;
+}
+
+/* Better Alignment for Metric Cards */
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.metric-trend {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Improved Button Spacing */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn-base {
+  min-width: 120px;
+}
+
+/* Enhanced Tab Navigation */
+.tab-container {
+  margin-bottom: 2rem;
+}
+
+.tab-content {
+  padding-top: 1.5rem;
+}
+
+/* Better Form Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Consistent Section Headers */
+.section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  opacity: 0.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Enhanced Loading States */
+.skeleton-metric {
+  height: 200px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 1rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Better Error and Empty States */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-message {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* Improved Focus States for Accessibility */
+.widget-container:focus-visible,
+.metric-card:focus-visible {
+  outline: 2px solid #1b4332;
+  outline-offset: 2px;
+  border-radius: 1rem;
+}
+
+/* Print Styles */
+@media print {
+  .dashboard-section {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .grid-metrics,
+  .grid-content,
+  .analytics-grid {
+    display: block;
+  }
+
+  .widget-container {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+}

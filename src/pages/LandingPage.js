@@ -155,7 +155,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900">
+    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 visual-hierarchy">
       {/* Hero Section */}
       <HeroSection />
 
@@ -231,23 +231,23 @@ const LandingPage = () => {
       </motion.div>
 
       {/* User Type Selection */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="container-optimized section-standard arabic-optimized">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center rhythm-content"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="heading-primary text-white text-center">
             اختر نوع المستخدم
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-lead text-white/70 max-w-3xl mx-auto">
             منصة يدوم تقدم تجارب مخصصة لكل نوع من المستخدمين
           </p>
         </motion.div>
 
         {/* User Type Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid-features rhythm-sections">
           {userTypes.map((userType, index) => (
             <motion.div
               key={userType.id}

@@ -12,6 +12,8 @@ import {
   ArrowLeft,
   Target,
   Star,
+  Video,
+  CheckCircle,
 } from "lucide-react";
 import { Doughnut, Bar } from "react-chartjs-2";
 import {
@@ -43,6 +45,8 @@ import { projectTypes, targetAudiences } from "../data/dhofarData";
 import { exportToPDF } from "../services/pdfService";
 import { getDemoPortfolio } from "../services/portfolioService";
 import ChatbotTrigger from "../components/ChatbotTrigger";
+import ExpertAdvisoryTeam from "../components/ExpertAdvisoryTeam";
+import InvestorCTA from "../components/InvestorCTA";
 
 ChartJS.register(
   CategoryScale,
@@ -63,7 +67,7 @@ const InvestorDashboard = () => {
   const [results, setResults] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [activeTab, setActiveTab] = useState("analysis");
-  const [portfolioView, setPortfolioView] = useState('overview');
+  const [portfolioView, setPortfolioView] = useState("overview");
   const [portfolioData, setPortfolioData] = useState([]);
 
   useEffect(() => {
@@ -86,7 +90,11 @@ const InvestorDashboard = () => {
       selectedAudience,
       investmentAmount
     );
-    const ss = calculateSS(selectedProjectType, investmentAmount, selectedRegion);
+    const ss = calculateSS(
+      selectedProjectType,
+      investmentAmount,
+      selectedRegion
+    );
     const demand = calculateWeightedDemand(
       selectedRegion,
       selectedProjectType,
@@ -99,7 +107,12 @@ const InvestorDashboard = () => {
       selectedRegion
     );
     const risks = getTopRisks(selectedProjectType, selectedAudience);
-    const confidence = calculateEnhancedConfidenceRate(iai, ss, selectedProjectType, selectedRegion);
+    const confidence = calculateEnhancedConfidenceRate(
+      iai,
+      ss,
+      selectedProjectType,
+      selectedRegion
+    );
 
     setResults({
       iai,
@@ -197,15 +210,15 @@ const InvestorDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900">
+    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 visual-hierarchy">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="bg-white/10 backdrop-blur-sm border-b border-white/20"
+        className="nav-layout-horizontal bg-white/10 backdrop-blur-sm border-b border-white/20"
       >
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="container-optimized">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
@@ -250,7 +263,7 @@ const InvestorDashboard = () => {
         </div>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="container-optimized section-standard">
         {/* Navigation Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -403,13 +416,13 @@ const InvestorDashboard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8"
+                className="grid-metrics rhythm-sections"
               >
-                <MathTooltip 
-                  equation={getEquationData('iai').equation}
-                  title={getEquationData('iai').title}
-                  description={getEquationData('iai').description}
-                  variables={getEquationData('iai').variables}
+                <MathTooltip
+                  equation={getEquationData("iai").equation}
+                  title={getEquationData("iai").title}
+                  description={getEquationData("iai").description}
+                  variables={getEquationData("iai").variables}
                 >
                   <AnimatedCard className="bg-gradient-to-br from-primary-500/20 to-primary-600/20 border-primary-500/30 hover:from-primary-500/30 hover:to-primary-600/30 transition-all duration-300">
                     <div className="flex flex-col items-center text-center space-y-3">
@@ -433,11 +446,11 @@ const InvestorDashboard = () => {
                   </AnimatedCard>
                 </MathTooltip>
 
-                <MathTooltip 
-                  equation={getEquationData('ss').equation}
-                  title={getEquationData('ss').title}
-                  description={getEquationData('ss').description}
-                  variables={getEquationData('ss').variables}
+                <MathTooltip
+                  equation={getEquationData("ss").equation}
+                  title={getEquationData("ss").title}
+                  description={getEquationData("ss").description}
+                  variables={getEquationData("ss").variables}
                 >
                   <AnimatedCard className="bg-gradient-to-br from-accent-500/20 to-accent-600/20 border-accent-500/30 hover:from-accent-500/30 hover:to-accent-600/30 transition-all duration-300">
                     <div className="flex flex-col items-center text-center space-y-3">
@@ -484,11 +497,11 @@ const InvestorDashboard = () => {
                   </div>
                 </AnimatedCard>
 
-                <MathTooltip 
-                  equation={getEquationData('confidence').equation}
-                  title={getEquationData('confidence').title}
-                  description={getEquationData('confidence').description}
-                  variables={getEquationData('confidence').variables}
+                <MathTooltip
+                  equation={getEquationData("confidence").equation}
+                  title={getEquationData("confidence").title}
+                  description={getEquationData("confidence").description}
+                  variables={getEquationData("confidence").variables}
                 >
                   <AnimatedCard className="bg-gradient-to-br from-green-500/20 to-green-600/20 border-green-500/30 hover:from-green-500/30 hover:to-green-600/30 transition-all duration-300">
                     <div className="flex flex-col items-center text-center space-y-3">
@@ -518,7 +531,7 @@ const InvestorDashboard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8"
+                className="grid-content rhythm-sections"
               >
                 <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
                   <div className="p-6">
@@ -570,7 +583,7 @@ const InvestorDashboard = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8"
+                className="grid-content rhythm-sections"
               >
                 <AnimatedCard className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
                   <div className="p-6">
@@ -656,22 +669,22 @@ const InvestorDashboard = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <div className="flex items-center gap-4 mb-6">
                   <button
-                    onClick={() => setPortfolioView('overview')}
+                    onClick={() => setPortfolioView("overview")}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      portfolioView === 'overview'
-                        ? 'bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg'
-                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                      portfolioView === "overview"
+                        ? "bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg"
+                        : "text-white/70 hover:text-white hover:bg-white/10"
                     }`}
                   >
                     <TrendingUp className="w-5 h-5 inline-block ml-2" />
                     نظرة عامة
                   </button>
                   <button
-                    onClick={() => setPortfolioView('ai-advisor')}
+                    onClick={() => setPortfolioView("ai-advisor")}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      portfolioView === 'ai-advisor'
-                        ? 'bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg'
-                        : 'text-white/70 hover:text-white hover:bg-white/10'
+                      portfolioView === "ai-advisor"
+                        ? "bg-gradient-to-r from-accent-500 to-primary-600 text-white shadow-lg"
+                        : "text-white/70 hover:text-white hover:bg-white/10"
                     }`}
                   >
                     <Brain className="w-5 h-5 inline-block ml-2" />
@@ -682,7 +695,7 @@ const InvestorDashboard = () => {
 
               {/* Portfolio Content */}
               <AnimatePresence mode="wait">
-                {portfolioView === 'overview' && (
+                {portfolioView === "overview" && (
                   <motion.div
                     key="portfolio-overview"
                     initial={{ opacity: 0, x: -20 }}
@@ -693,7 +706,7 @@ const InvestorDashboard = () => {
                     <InvestmentPortfolio />
                   </motion.div>
                 )}
-                {portfolioView === 'ai-advisor' && (
+                {portfolioView === "ai-advisor" && (
                   <motion.div
                     key="ai-advisor"
                     initial={{ opacity: 0, x: 20 }}
@@ -701,12 +714,12 @@ const InvestorDashboard = () => {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <AIInvestmentAdvisor 
+                    <AIInvestmentAdvisor
                       portfolio={portfolioData}
                       marketData={{
                         region: selectedRegion,
                         projectType: selectedProjectType,
-                        results: results
+                        results: results,
                       }}
                     />
                   </motion.div>
@@ -867,9 +880,58 @@ const InvestorDashboard = () => {
             </motion.div>
           )}
 
-
+          {/* Expert Consultation Section */}
+          {results && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-8"
+            >
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200 text-center">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Video className="w-8 h-8 text-blue-600" />
+                  <Users className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                  🎯 هل تريد مناقشة هذه النتائج مع خبير؟
+                </h3>
+                <p className="text-gray-600 mb-6 text-lg">
+                  احصل على استشارة مرئية مخصصة لمشروعك مع أحد خبرائنا المتخصصين
+                </p>
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-green-600">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      استشارة مجانية 15 دقيقة
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-600">
+                    <Video className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      مكالمة فيديو مباشرة
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-purple-600">
+                    <Star className="w-5 h-5" />
+                    <span className="text-sm font-medium">خبراء معتمدون</span>
+                  </div>
+                </div>
+                <ExpertAdvisoryTeam
+                  analysisData={results}
+                  onConsultationBooked={(data) => {
+                    console.log("Video consultation booked:", data);
+                    // Could show success message or redirect
+                  }}
+                />
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
+
+      {/* Smart CTA that appears based on results */}
+      <InvestorCTA analysisData={results} visible={!!results} />
 
       {/* AI Chatbot Trigger */}
       <ChatbotTrigger />
