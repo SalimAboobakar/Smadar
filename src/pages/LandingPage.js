@@ -13,8 +13,8 @@ import {
   Vote,
   Briefcase,
   Search,
-  Download,
-  Smartphone,
+  
+  
 } from "lucide-react";
 import HeroSection from "../components/HeroSection";
 import ChatbotTrigger from "../components/ChatbotTrigger";

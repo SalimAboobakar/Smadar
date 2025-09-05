@@ -1,0 +1,315 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: ["class", '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      fontFamily: {
+        primary: [
+          "IBM Plex Sans Arabic",
+          "Cairo",
+          "Tajawal",
+          "system-ui",
+          "sans-serif",
+        ],
+        display: ["Amiri", "IBM Plex Sans Arabic", "serif"],
+        mono: ["JetBrains Mono", "Fira Code", "monospace"],
+        arabic: ["Cairo", "Tajawal", "sans-serif"],
+      },
+      fontSize: {
+        "fluid-sm": "clamp(0.875rem, 2vw, 1rem)",
+        "fluid-base": "clamp(1rem, 2.5vw, 1.125rem)",
+        "fluid-lg": "clamp(1.125rem, 3vw, 1.5rem)",
+        "fluid-xl": "clamp(1.25rem, 4vw, 2rem)",
+        "fluid-2xl": "clamp(1.5rem, 5vw, 3rem)",
+        "fluid-3xl": "clamp(2rem, 6vw, 4rem)",
+      },
+      lineHeight: {
+        arabic: "1.8",
+        "arabic-tight": "1.6",
+        "arabic-loose": "2.0",
+      },
+      spacing: {
+        18: "4.5rem",
+        88: "22rem",
+        128: "32rem",
+      },
+      animation: {
+        "fade-in-up": "fadeInUp 0.6s ease-out forwards",
+        "fade-in-scale": "fadeInScale 0.5s ease-out forwards",
+        shimmer: "shimmer 2s infinite",
+        "pulse-glow": "pulseGlow 2s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
+        "rotate-slow": "rotateSlow 8s linear infinite",
+        "bounce-slow": "bounce 2s infinite",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeInScale: {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { boxShadow: "0 0 5px rgba(16, 185, 129, 0.3)" },
+          "50%": {
+            boxShadow:
+              "0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.3)",
+          },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        rotateSlow: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
+      backdropBlur: {
+        xs: "2px",
+        "4xl": "72px",
+      },
+      colors: {
+        // Enhanced color system
+        forest: {
+          50: "#f0fdf4",
+          100: "#dcfce7",
+          200: "#bbf7d0",
+          300: "#86efac",
+          400: "#4ade80",
+          500: "#1b4332", // Your primary dark green
+          600: "#16a34a",
+          700: "#15803d",
+          800: "#166534",
+          900: "#14532d",
+          950: "#052e16",
+        },
+        emerald: {
+          50: "#ecfdf5",
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          400: "#34d399",
+          500: "#10b981",
+          600: "#059669",
+          700: "#047857",
+          800: "#065f46",
+          900: "#064e3b",
+          950: "#022c22",
+        },
+        sage: {
+          50: "#f9fafb",
+          100: "#f3f4f6",
+          200: "#e5e7eb",
+          300: "#d1d5db",
+          400: "#9ca3af",
+          500: "#2d6d4f", // Your accent green
+          600: "#4b5563",
+          700: "#374151",
+          800: "#1f2937",
+          900: "#111827",
+          950: "#030712",
+        },
+        glass: {
+          white: "rgba(255, 255, 255, 0.1)",
+          black: "rgba(0, 0, 0, 0.1)",
+          emerald: "rgba(16, 185, 129, 0.1)",
+          forest: "rgba(27, 67, 50, 0.1)",
+        },
+        primary: {
+          50: "#f0f9f4",
+          100: "#dcf4e4",
+          200: "#bce7cc",
+          300: "#8dd5a7",
+          400: "#52ba7b",
+          500: "#2d6d4f",
+          600: "#1b4332",
+          700: "#163a2a",
+          800: "#142f24",
+          900: "#11261e",
+        },
+        accent: {
+          50: "#f0f9f4",
+          100: "#dcf4e4",
+          200: "#bce7cc",
+          300: "#8dd5a7",
+          400: "#52ba7b",
+          500: "#2d6d4f",
+          600: "#1f5a3d",
+          700: "#1a4d33",
+          800: "#163e2a",
+          900: "#133224",
+        },
+        light: {
+          50: "#fdfcfd",
+          100: "#f9f7fa",
+          200: "#f1eef4",
+          300: "#e7e3eb",
+          400: "#dbd2e0",
+          500: "#cfc3d5",
+          600: "#b5a5be",
+          700: "#9b8aa7",
+          800: "#7d6b8a",
+          900: "#5f516b",
+        },
+        // Dark mode colors
+        dark: {
+          bg: {
+            primary: "#0a0f0a",
+            secondary: "#0f1b0f",
+            tertiary: "#1a2e1a",
+          },
+          text: {
+            primary: "#f0fdf4",
+            secondary: "#dcfce7",
+            muted: "#86efac",
+          },
+          border: "#374151",
+        },
+      },
+      boxShadow: {
+        "glow-sm": "0 0 10px rgba(16, 185, 129, 0.3)",
+        glow: "0 0 20px rgba(16, 185, 129, 0.3)",
+        "glow-lg": "0 0 40px rgba(16, 185, 129, 0.4)",
+        forest:
+          "0 10px 25px -5px rgba(27, 67, 50, 0.1), 0 4px 10px -6px rgba(27, 67, 50, 0.1)",
+        emerald:
+          "0 10px 25px -5px rgba(16, 185, 129, 0.1), 0 4px 10px -6px rgba(16, 185, 129, 0.1)",
+        glass: "0 8px 32px rgba(0, 0, 0, 0.1)",
+        card: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "card-hover":
+          "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+        "5xl": "2.5rem",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+        "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
+        bounce: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      },
+      screens: {
+        xs: "475px",
+        "3xl": "1600px",
+      },
+      zIndex: {
+        60: "60",
+        70: "70",
+        80: "80",
+        90: "90",
+        100: "100",
+      },
+    },
+  },
+  plugins: [
+    function ({ addUtilities, addComponents, theme }) {
+      // Add custom utilities
+      addUtilities({
+        ".text-balance": {
+          "text-wrap": "balance",
+        },
+        ".scrollbar-hide": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+        ".dir-rtl": {
+          direction: "rtl",
+        },
+        ".dir-ltr": {
+          direction: "ltr",
+        },
+      });
+
+      // Add custom components
+      addComponents({
+        ".btn-glass": {
+          background: "rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(16px)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
+          borderRadius: theme("borderRadius.xl"),
+          padding: `${theme("spacing.3")} ${theme("spacing.6")}`,
+          transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "&:hover": {
+            background: "rgba(255, 255, 255, 0.2)",
+            transform: "translateY(-2px)",
+          },
+        },
+        ".card-glass": {
+          background: "rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(16px)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
+          borderRadius: theme("borderRadius.2xl"),
+          boxShadow: theme("boxShadow.glass"),
+          transition: "all 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+        },
+        ".gradient-forest": {
+          background: "linear-gradient(135deg, #1b4332 0%, #2d6d4f 100%)",
+        },
+        ".gradient-emerald": {
+          background: "linear-gradient(135deg, #10b981 0%, #34d399 100%)",
+        },
+        ".gradient-text-forest": {
+          background: "linear-gradient(135deg, #1b4332 0%, #2d6d4f 100%)",
+          "-webkit-background-clip": "text",
+          "-webkit-text-fill-color": "transparent",
+          "background-clip": "text",
+        },
+      });
+    },
+  ],
+};
+
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#1b4332',  // Main dark green
+          600: '#16a34a',
+          700: '#15803d',
+          800: '#166534',
+          900: '#14532d',
+        },
+        accent: {
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#2d6d4f',  // Accent green
+          600: '#16a34a',
+          700: '#15803d',
+          800: '#166534',
+          900: '#14532d',
+        },
+        gray: {
+          50: '#0f172a',
+          100: '#1e293b',
+          200: '#334155',
+          300: '#475569',
+          400: '#64748b',
+          500: '#94a3b8',
+          600: '#cbd5e1',
+          700: '#e2e8f0',
+          800: '#f1f5f9',
+          900: '#f8fafc',
+        }
+      }
+    }
+  }

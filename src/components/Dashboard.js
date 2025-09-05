@@ -77,7 +77,11 @@ const Dashboard = () => {
       selectedAudience,
       investmentAmount
     );
-    const ss = calculateSS(selectedProjectType, investmentAmount);
+    const ss = calculateSS(
+      selectedProjectType,
+      investmentAmount,
+      selectedRegion
+    );
     const demand = calculateWeightedDemand(
       selectedRegion,
       selectedProjectType,

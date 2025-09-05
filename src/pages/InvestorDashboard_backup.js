@@ -59,49 +59,27 @@ const InvestorDashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("analysis");
   const [portfolioSubTab, setPortfolioSubTab] = useState("overview");
-  const [selectedProjectType, setSelectedProjectType] = useState("hotels");
+  const [selectedProjectType, setSelectedProjectType] = useState("tourism");
   const [investmentAmount, setInvestmentAmount] = useState(100000);
-  const [targetAudience, setTargetAudience] = useState("tourists");
+  const [targetAudience, setTargetAudience] = useState("young_adults");
   const [selectedRegion, setSelectedRegion] = useState("salalah");
   const [results, setResults] = useState(null);
   const [showExpertModal, setShowExpertModal] = useState(false);
 
   const calculateResults = useCallback(() => {
     try {
-      const iai = calculateIAI(
-        selectedRegion,
-        selectedProjectType,
-        targetAudience,
-        investmentAmount
-      );
-      const ss = calculateSS(
-        selectedProjectType,
-        investmentAmount,
-        selectedRegion
-      );
-      const confidence = calculateEnhancedConfidenceRate(
-        iai,
-        ss,
-        selectedProjectType,
-        selectedRegion
-      );
-      const demand = calculateWeightedDemand(
-        selectedRegion,
-        selectedProjectType,
-        targetAudience
-      );
+      const iai = calculateIAI(selectedProjectType, investmentAmount, targetAudience);
+      const ss = calculateSS(selectedProjectType, investmentAmount, selectedRegion);
+      const confidence = calculateEnhancedConfidenceRate(selectedProjectType, investmentAmount, selectedRegion);
+      const demand = calculateWeightedDemand(selectedProjectType, targetAudience);
 
       setResults({
         iai: iai || 0,
         ss: ss || 0,
         confidence: confidence || 0,
         demand: demand || 0,
-        recommendations:
-          getRecommendations(iai, ss, selectedProjectType, selectedRegion) ||
-          [],
-        risks:
-          getTopRisks(selectedProjectType, targetAudience, selectedRegion) ||
-          [],
+        recommendations: getRecommendations(iai, ss) || [],
+        risks: getTopRisks(selectedProjectType, selectedRegion) || [],
       });
     } catch (error) {
       console.error("Error calculating results:", error);
@@ -111,13 +89,7 @@ const InvestorDashboard = () => {
         confidence: 0,
         demand: 0,
         recommendations: ["حدث خطأ في حساب التوصيات"],
-        risks: [
-          {
-            name: "خطأ في النظام",
-            description: "يرجى إعادة المحاولة",
-            level: "high",
-          },
-        ],
+        risks: [{ name: "خطأ في النظام", description: "يرجى إعادة المحاولة", level: "high" }],
       });
     }
   }, [selectedProjectType, investmentAmount, targetAudience, selectedRegion]);
@@ -222,45 +194,41 @@ const InvestorDashboard = () => {
   };
 
   return (
-    <div className="dashboard-dark">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-primary-900 to-slate-900 visual-hierarchy">
       {/* Enhanced Header */}
-      <div className="nav-dark sticky top-0 z-50">
-        <div className="flex items-center justify-between px-8 py-4">
-          <div className="flex items-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>العودة للرئيسية</span>
-            </motion.button>
-            <div className="h-8 w-px bg-white/20" />
-            <h1 className="text-2xl font-bold text-white">
-              لوحة تحكم المستثمر
-            </h1>
-          </div>
+      <div className="nav-layout-horizontal sticky top-0 z-50">
+        <div className="flex items-center gap-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>العودة للرئيسية</span>
+          </motion.button>
+          <div className="h-8 w-px bg-white/20" />
+          <h1 className="text-2xl font-bold text-white">لوحة تحكم المستثمر</h1>
+        </div>
 
-          <div className="flex items-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleExportPDF}
-              className="btn-dark-primary"
-            >
-              <Download className="w-5 h-5" />
-              <span>تصدير التقرير</span>
-            </motion.button>
-          </div>
+        <div className="flex items-center gap-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleExportPDF}
+            className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl transition-all duration-300 shadow-lg"
+          >
+            <Download className="w-5 h-5" />
+            <span>تصدير التقرير</span>
+          </motion.button>
         </div>
       </div>
 
       {/* Main Content Container */}
-      <div className="px-8 py-8">
+      <div className="container-optimized section-standard">
         {/* Navigation Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="tab-container-dark">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-2 border border-white/20">
             {[
               { id: "analysis", label: "التحليل", icon: BarChart3 },
               { id: "portfolio", label: "المحفظة", icon: Brain },
@@ -271,9 +239,13 @@ const InvestorDashboard = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setActiveTab(tab.id)}
-                className={`tab-dark ${activeTab === tab.id ? "active" : ""}`}
+                className={`flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 ${
+                  activeTab === tab.id
+                    ? "bg-gradient-to-r from-primary-500 to-accent-600 text-white shadow-xl"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}
               >
-                <tab.icon className="w-5 h-5 inline-block mr-3" />
+                <tab.icon className="w-5 h-5" />
                 {tab.label}
               </motion.button>
             ))}
@@ -292,21 +264,19 @@ const InvestorDashboard = () => {
               className="space-y-8"
             >
               {/* Project Selection Form */}
-              <div className="card-dark p-8">
+              <AnimatedCard className="p-8 bg-white/5 backdrop-blur-xl border border-white/10">
                 <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                  <Target className="w-8 h-8 text-primary-light" />
+                  <Target className="w-8 h-8 text-primary-400" />
                   اختيار المشروع
                 </h2>
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="space-y-3">
-                    <label className="block text-white/80 font-medium">
-                      المنطقة
-                    </label>
+                    <label className="block text-white/80 font-medium">المنطقة</label>
                     <select
                       value={selectedRegion}
                       onChange={(e) => setSelectedRegion(e.target.value)}
-                      className="form-dark w-full"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
                     >
                       <option value="salalah">صلالة</option>
                       <option value="mirbat">مرباط</option>
@@ -315,32 +285,26 @@ const InvestorDashboard = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <label className="block text-white/80 font-medium">
-                      الجمهور المستهدف
-                    </label>
+                    <label className="block text-white/80 font-medium">الجمهور المستهدف</label>
                     <select
                       value={targetAudience}
                       onChange={(e) => setTargetAudience(e.target.value)}
-                      className="form-dark w-full"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
                     >
-                      {Object.entries(targetAudiences).map(
-                        ([key, audience]) => (
-                          <option key={key} value={key}>
-                            {audience.name}
-                          </option>
-                        )
-                      )}
+                      {Object.entries(targetAudiences).map(([key, audience]) => (
+                        <option key={key} value={key}>
+                          {audience.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
                   <div className="space-y-3">
-                    <label className="block text-white/80 font-medium">
-                      نوع المشروع
-                    </label>
+                    <label className="block text-white/80 font-medium">نوع المشروع</label>
                     <select
                       value={selectedProjectType}
                       onChange={(e) => setSelectedProjectType(e.target.value)}
-                      className="form-dark w-full"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
                     >
                       {Object.entries(projectTypes).map(([key, project]) => (
                         <option key={key} value={key}>
@@ -351,131 +315,150 @@ const InvestorDashboard = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <label className="block text-white/80 font-medium">
-                      مبلغ الاستثمار (ريال)
-                    </label>
+                    <label className="block text-white/80 font-medium">مبلغ الاستثمار (ريال)</label>
                     <input
                       type="number"
                       value={investmentAmount}
-                      onChange={(e) =>
-                        setInvestmentAmount(Number(e.target.value))
-                      }
-                      className="form-dark w-full"
+                      onChange={(e) => setInvestmentAmount(Number(e.target.value))}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
                       min="10000"
                       step="10000"
                     />
                   </div>
                 </div>
-              </div>
+              </AnimatedCard>
 
               {/* Enhanced Metrics Grid */}
-              <div className="grid-dark grid-metrics-dark">
-                <MathTooltip
-                  equation={getEquationData("iai").equation}
-                  title={getEquationData("iai").title}
-                  description={getEquationData("iai").description}
-                  variables={getEquationData("iai").variables}
-                >
-                  <div className="metric-card-dark">
-                    <div className="p-3 bg-primary-medium/20 rounded-full mb-4 mx-auto w-fit">
-                      <TrendingUp className="w-8 h-8 text-primary-light" />
-                    </div>
-                    <div className="text-4xl font-bold text-white mb-2">
-                      {results?.iai ? `${Math.round(results.iai)}%` : "0%"}
-                    </div>
-                    <div className="text-white/80 font-medium">
-                      مؤشر الجاذبية الاستثمارية
-                    </div>
-                    <div className="text-primary-light text-sm mt-2">IAI</div>
-                  </div>
-                </MathTooltip>
-
-                <MathTooltip
-                  equation={getEquationData("ss").equation}
-                  title={getEquationData("ss").title}
-                  description={getEquationData("ss").description}
-                  variables={getEquationData("ss").variables}
-                >
-                  <div className="metric-card-dark">
-                    <div className="p-3 bg-green-500/20 rounded-full mb-4 mx-auto w-fit">
-                      <Shield className="w-8 h-8 text-green-400" />
-                    </div>
-                    <div className="text-4xl font-bold text-white mb-2">
-                      {results?.ss ? results.ss.toFixed(1) : "0.0"}
-                    </div>
-                    <div className="text-white/80 font-medium">
-                      مؤشر الاستدامة
-                    </div>
-                    <div className="text-green-400 text-sm mt-2">SS</div>
-                  </div>
-                </MathTooltip>
-
-                <MathTooltip
-                  equation={getEquationData("confidence").equation}
-                  title={getEquationData("confidence").title}
-                  description={getEquationData("confidence").description}
-                  variables={getEquationData("confidence").variables}
-                >
-                  <div className="metric-card-dark">
-                    <div className="p-3 bg-blue-500/20 rounded-full mb-4 mx-auto w-fit">
-                      <Target className="w-8 h-8 text-blue-400" />
-                    </div>
-                    <div className="text-4xl font-bold text-white mb-2">
-                      {results?.confidence
-                        ? `${Math.round(results.confidence)}%`
-                        : "0%"}
-                    </div>
-                    <div className="text-white/80 font-medium">معدل الثقة</div>
-                    <div className="text-blue-400 text-sm mt-2">Confidence</div>
-                  </div>
-                </MathTooltip>
-
-                <div className="metric-card-dark">
-                  <div className="p-3 bg-yellow-500/20 rounded-full mb-4 mx-auto w-fit">
-                    <Users className="w-8 h-8 text-yellow-400" />
-                  </div>
-                  <div className="text-4xl font-bold text-white mb-2">
-                    {results?.demand ? Math.round(results.demand) : "0"}
-                  </div>
-                  <div className="text-white/80 font-medium">الطلب المتوقع</div>
-                  <div className="text-yellow-400 text-sm mt-2">يومياً</div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="grid-metrics dashboard-section"
+              >
+                <div className="tooltip-wrapper">
+                  <MathTooltip
+                    equation={getEquationData("iai").equation}
+                    title={getEquationData("iai").title}
+                    description={getEquationData("iai").description}
+                    variables={getEquationData("iai").variables}
+                  >
+                    <AnimatedCard className="metric-card widget-container">
+                      <div className="metric-card-content">
+                        <div className="p-3 bg-primary-500/20 rounded-full mb-4">
+                          <TrendingUp className="w-8 h-8 text-primary-400" />
+                        </div>
+                        <div className="metric-value text-white">
+                          {results?.iai ? `${Math.round(results.iai)}%` : "0%"}
+                        </div>
+                        <div className="metric-label text-white/80">
+                          مؤشر الجاذبية الاستثمارية
+                        </div>
+                        <div className="metric-trend text-primary-400">
+                          <span className="text-xs">IAI</span>
+                        </div>
+                      </div>
+                    </AnimatedCard>
+                  </MathTooltip>
                 </div>
-              </div>
+
+                <div className="tooltip-wrapper">
+                  <MathTooltip
+                    equation={getEquationData("ss").equation}
+                    title={getEquationData("ss").title}
+                    description={getEquationData("ss").description}
+                    variables={getEquationData("ss").variables}
+                  >
+                    <AnimatedCard className="metric-card widget-container">
+                      <div className="metric-card-content">
+                        <div className="p-3 bg-green-500/20 rounded-full mb-4">
+                          <Shield className="w-8 h-8 text-green-400" />
+                        </div>
+                        <div className="metric-value text-white">
+                          {results?.ss ? results.ss.toFixed(1) : "0.0"}
+                        </div>
+                        <div className="metric-label text-white/80">مؤشر الاستدامة</div>
+                        <div className="metric-trend text-green-400">
+                          <span className="text-xs">SS</span>
+                        </div>
+                      </div>
+                    </AnimatedCard>
+                  </MathTooltip>
+                </div>
+
+                <div className="tooltip-wrapper">
+                  <MathTooltip
+                    equation={getEquationData("confidence").equation}
+                    title={getEquationData("confidence").title}
+                    description={getEquationData("confidence").description}
+                    variables={getEquationData("confidence").variables}
+                  >
+                    <AnimatedCard className="metric-card widget-container">
+                      <div className="metric-card-content">
+                        <div className="p-3 bg-blue-500/20 rounded-full mb-4">
+                          <Target className="w-8 h-8 text-blue-400" />
+                        </div>
+                        <div className="metric-value text-white">
+                          {results?.confidence ? `${Math.round(results.confidence)}%` : "0%"}
+                        </div>
+                        <div className="metric-label text-white/80">معدل الثقة</div>
+                        <div className="metric-trend text-blue-400">
+                          <span className="text-xs">Confidence</span>
+                        </div>
+                      </div>
+                    </AnimatedCard>
+                  </MathTooltip>
+                </div>
+
+                <AnimatedCard className="metric-card widget-container">
+                  <div className="metric-card-content">
+                    <div className="p-3 bg-yellow-500/20 rounded-full mb-4">
+                      <Users className="w-8 h-8 text-yellow-400" />
+                    </div>
+                    <div className="metric-value text-white">
+                      {results?.demand ? Math.round(results.demand) : "0"}
+                    </div>
+                    <div className="metric-label text-white/80">الطلب المتوقع</div>
+                    <div className="metric-trend text-yellow-400">
+                      <span className="text-xs">يومياً</span>
+                    </div>
+                  </div>
+                </AnimatedCard>
+              </motion.div>
 
               {/* Charts Section */}
-              <div className="grid-dark grid-content-dark">
+              <div className="grid-content rhythm-sections">
                 <div className="space-y-8">
                   {/* Sector Distribution Chart */}
-                  <div className="chart-container-dark">
+                  <AnimatedCard className="p-8">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-2xl font-bold text-white flex items-center gap-3">
-                        <BarChart3 className="w-6 h-6 text-primary-light" />
+                        <BarChart3 className="w-6 h-6 text-primary-400" />
                         توزيع القطاعات
                       </h3>
                     </div>
-                    <div className="h-80">
+                    <div className="chart-wrapper h-80">
                       <Doughnut data={sectorData} options={doughnutOptions} />
                     </div>
-                  </div>
+                  </AnimatedCard>
 
                   {/* Performance Chart */}
-                  <div className="chart-container-dark">
+                  <AnimatedCard className="p-8">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                         <TrendingUp className="w-6 h-6 text-green-400" />
                         الأداء المالي المتوقع
                       </h3>
                     </div>
-                    <div className="h-80">
+                    <div className="chart-wrapper h-80">
                       <Bar data={performanceData} options={chartOptions} />
                     </div>
-                  </div>
+                  </AnimatedCard>
                 </div>
 
                 {/* Side Panel */}
                 <div className="space-y-8">
                   {/* Recommendations */}
-                  <div className="card-dark p-6">
+                  <AnimatedCard className="p-6">
                     <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                       <Star className="w-6 h-6 text-yellow-400" />
                       التوصيات
@@ -484,16 +467,14 @@ const InvestorDashboard = () => {
                       {results?.recommendations?.map((rec, index) => (
                         <div key={index} className="flex items-start gap-3">
                           <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                          <p className="text-white/80 text-sm leading-relaxed">
-                            {rec.message || rec}
-                          </p>
+                          <p className="text-white/80 text-sm leading-relaxed">{rec}</p>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </AnimatedCard>
 
                   {/* Risk Analysis */}
-                  <div className="card-dark p-6">
+                  <AnimatedCard className="p-6">
                     <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                       <AlertTriangle className="w-6 h-6 text-red-400" />
                       تحليل المخاطر
@@ -503,25 +484,18 @@ const InvestorDashboard = () => {
                         <div key={index} className="flex items-start gap-3">
                           <AlertTriangle className="w-5 h-5 text-red-400 mt-1 flex-shrink-0" />
                           <div>
-                            <p className="text-white font-medium text-sm">
-                              {risk.name}
-                            </p>
-                            <p className="text-white/60 text-xs">
-                              {risk.description}
-                            </p>
+                            <p className="text-white font-medium text-sm">{risk.name}</p>
+                            <p className="text-white/60 text-xs">{risk.description}</p>
                           </div>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </AnimatedCard>
                 </div>
               </div>
 
               {/* Expert Advisory CTA */}
-              <InvestorCTA
-                analysisData={results}
-                onExpertClick={() => setShowExpertModal(true)}
-              />
+              <InvestorCTA analysisData={results} onExpertClick={() => setShowExpertModal(true)} />
             </motion.div>
           )}
 
@@ -535,7 +509,7 @@ const InvestorDashboard = () => {
             >
               {/* Portfolio Sub-navigation */}
               <div className="flex justify-center mb-8">
-                <div className="tab-container-dark">
+                <div className="bg-white/10 backdrop-blur-lg rounded-xl p-1 border border-white/20">
                   {[
                     { id: "overview", label: "نظرة عامة" },
                     { id: "ai-advisor", label: "مستشار الذكاء الاصطناعي" },
@@ -545,8 +519,10 @@ const InvestorDashboard = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setPortfolioSubTab(subTab.id)}
-                      className={`tab-dark ${
-                        portfolioSubTab === subTab.id ? "active" : ""
+                      className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                        portfolioSubTab === subTab.id
+                          ? "bg-gradient-to-r from-primary-500 to-accent-600 text-white"
+                          : "text-white/70 hover:text-white"
                       }`}
                     >
                       {subTab.label}
@@ -597,9 +573,9 @@ const InvestorDashboard = () => {
       </div>
 
       {/* Expert Advisory Modal */}
-      <ExpertAdvisoryTeam
-        isOpen={showExpertModal}
-        onClose={() => setShowExpertModal(false)}
+      <ExpertAdvisoryTeam 
+        isOpen={showExpertModal} 
+        onClose={() => setShowExpertModal(false)} 
       />
 
       {/* Chatbot */}

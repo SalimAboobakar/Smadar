@@ -6,11 +6,10 @@ import {
   Users,
   Shield,
   ArrowRight,
-  Star,
   Zap,
   Award,
   ChevronRight,
-  Play
+  Play,
 } from "lucide-react";
 import Spotlight from "./ui/Spotlight";
 import BackgroundBeams from "./ui/BackgroundBeams";
@@ -26,9 +25,9 @@ const HeroSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
+        delayChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -38,9 +37,9 @@ const HeroSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
   };
 
   const leftSlideVariants = {
@@ -50,9 +49,9 @@ const HeroSection = () => {
       x: 0,
       transition: {
         duration: 1,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
   };
 
   const rightSlideVariants = {
@@ -63,9 +62,9 @@ const HeroSection = () => {
       transition: {
         duration: 1,
         ease: [0.25, 0.46, 0.45, 0.94],
-        delay: 0.3
-      }
-    }
+        delay: 0.3,
+      },
+    },
   };
 
   const cardVariants = {
@@ -76,9 +75,9 @@ const HeroSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
   };
 
   const glowVariants = {
@@ -86,14 +85,14 @@ const HeroSection = () => {
       boxShadow: [
         "0 0 20px rgba(45, 109, 79, 0.3)",
         "0 0 40px rgba(45, 109, 79, 0.5)",
-        "0 0 20px rgba(45, 109, 79, 0.3)"
+        "0 0 20px rgba(45, 109, 79, 0.3)",
       ],
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -126,7 +125,7 @@ const HeroSection = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
         <motion.div
@@ -138,7 +137,7 @@ const HeroSection = () => {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         <motion.div
@@ -150,7 +149,7 @@ const HeroSection = () => {
           transition={{
             duration: 4,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
       </div>
@@ -162,7 +161,6 @@ const HeroSection = () => {
           animate="visible"
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center min-h-[70vh]"
         >
-          
           {/* Left Column - Primary Content (7 columns) */}
           <motion.div
             variants={leftSlideVariants}
@@ -202,7 +200,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Dynamic Typewriter with Enhanced Styling */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="h-16 flex items-center justify-center lg:justify-start"
             >
@@ -215,7 +213,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Enhanced Description */}
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-xl lg:text-2xl text-white/80 leading-relaxed max-w-3xl mx-auto lg:mx-0 font-light"
             >
@@ -225,7 +223,7 @@ const HeroSection = () => {
             </motion.p>
 
             {/* Premium Action Buttons */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start pt-8"
             >
@@ -261,7 +259,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Trust Indicators */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="pt-12 flex items-center justify-center lg:justify-start gap-8 text-white/60"
             >
@@ -288,10 +286,10 @@ const HeroSection = () => {
             {/* Advanced Analytics Card */}
             <motion.div
               variants={cardVariants}
-              whileHover={{ 
-                y: -10, 
+              whileHover={{
+                y: -10,
                 scale: 1.02,
-                rotateY: 5
+                rotateY: 5,
               }}
               className="group relative"
             >
@@ -321,10 +319,10 @@ const HeroSection = () => {
             {/* Community Engagement Card */}
             <motion.div
               variants={cardVariants}
-              whileHover={{ 
-                y: -10, 
+              whileHover={{
+                y: -10,
                 scale: 1.02,
-                rotateY: -5
+                rotateY: -5,
               }}
               className="group relative"
             >
@@ -343,8 +341,8 @@ const HeroSection = () => {
                       مشاركة المجتمع
                     </h3>
                     <p className="text-white/70 leading-relaxed text-lg">
-                      نظام تصويت مجتمعي تفاعلي لتعزيز الشفافية والمشاركة في اتخاذ
-                      القرارات الاستثمارية
+                      نظام تصويت مجتمعي تفاعلي لتعزيز الشفافية والمشاركة في
+                      اتخاذ القرارات الاستثمارية
                     </p>
                   </div>
                 </div>
@@ -354,10 +352,10 @@ const HeroSection = () => {
             {/* Sustainability Card */}
             <motion.div
               variants={cardVariants}
-              whileHover={{ 
-                y: -10, 
+              whileHover={{
+                y: -10,
                 scale: 1.02,
-                rotateY: 5
+                rotateY: 5,
               }}
               className="group relative"
             >
@@ -376,8 +374,8 @@ const HeroSection = () => {
                       استدامة المشاريع
                     </h3>
                     <p className="text-white/70 leading-relaxed text-lg">
-                      تحليل شامل للمخاطر وضمان الاستدامة البيئية والاقتصادية للمشاريع
-                      الاستثمارية
+                      تحليل شامل للمخاطر وضمان الاستدامة البيئية والاقتصادية
+                      للمشاريع الاستثمارية
                     </p>
                   </div>
                 </div>
@@ -400,7 +398,7 @@ const HeroSection = () => {
                 { number: "3", label: "ولايات مستهدفة", icon: "🏢" },
                 { number: "5+", label: "أنواع مشاريع", icon: "📊" },
                 { number: "100%", label: "شفافية", icon: "✨" },
-                { number: "24/7", label: "متاح دائماً", icon: "🚀" }
+                { number: "24/7", label: "متاح دائماً", icon: "🚀" },
               ].map((stat, index) => (
                 <motion.div
                   key={index}

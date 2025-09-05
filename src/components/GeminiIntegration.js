@@ -21,6 +21,7 @@ const GeminiIntegration = ({ projectData, results }) => {
   const [analysisResult, setAnalysisResult] = useState(null);
   const [activeTab, setActiveTab] = useState("overview");
   const [error, setError] = useState(null);
+  const [detailedMode, setDetailedMode] = useState(false);
 
   const handleGeminiAnalysis = async (analysisType) => {
     setIsAnalyzing(true);
@@ -31,39 +32,47 @@ const GeminiIntegration = ({ projectData, results }) => {
 
       switch (analysisType) {
         case "overview":
-          result = await analyzeProjectWithGemini(projectData);
+          result = await analyzeProjectWithGemini(projectData, detailedMode);
           break;
         case "recommendations":
           result = await generateSmartRecommendations(
             results.iai,
             results.ss,
             projectData.projectType,
-            projectData.region
+            projectData.region,
+            detailedMode
           );
           break;
         case "risks":
-          result = await analyzeRisksWithGemini(projectData, results.risks);
+          result = await analyzeRisksWithGemini(
+            projectData,
+            results.risks,
+            detailedMode
+          );
           break;
         case "market":
           result = await analyzeMarketCompetition(
             projectData.projectType,
-            projectData.region
+            projectData.region,
+            detailedMode
           );
           break;
         case "actionPlan":
           result = await generateActionPlan(
             projectData,
-            results.recommendations
+            results.recommendations,
+            detailedMode
           );
           break;
         default:
-          result = await analyzeProjectWithGemini(projectData);
+          result = await analyzeProjectWithGemini(projectData, detailedMode);
       }
 
       setAnalysisResult({
         type: analysisType,
         content: result,
         timestamp: new Date().toLocaleString("ar-SA"),
+        detailed: detailedMode,
       });
     } catch (err) {
       setError("حدث خطأ في التحليل. يرجى المحاولة لاحقاً.");
@@ -90,6 +99,38 @@ const GeminiIntegration = ({ projectData, results }) => {
         <h3 className="text-xl font-semibold text-white">
           التحليل الذكي بالذكاء الاصطناعي
         </h3>
+      </div>
+
+      {/* Response Mode Toggle */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-white/70">وضع الرد:</span>
+          <div className="flex bg-white/10 rounded-lg p-1">
+            <button
+              onClick={() => setDetailedMode(false)}
+              className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
+                !detailedMode
+                  ? "bg-accent-500 text-white"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              موجز
+            </button>
+            <button
+              onClick={() => setDetailedMode(true)}
+              className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
+                detailedMode
+                  ? "bg-accent-500 text-white"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              مفصل
+            </button>
+          </div>
+        </div>
+        <div className="text-xs text-white/50">
+          {detailedMode ? "تحليل شامل ومفصل" : "تحليل سريع وموجز"}
+        </div>
       </div>
 
       {/* Tabs */}
@@ -136,7 +177,9 @@ const GeminiIntegration = ({ projectData, results }) => {
             <h4 className="text-lg font-semibold text-white mb-2">
               جاري التحليل الذكي...
             </h4>
-            <p className="text-white/70">الذكاء الاصطناعي يحلل بيانات المشروع</p>
+            <p className="text-white/70">
+              الذكاء الاصطناعي يحلل بيانات المشروع
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -168,9 +211,20 @@ const GeminiIntegration = ({ projectData, results }) => {
             className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
           >
             <div className="flex items-center justify-between mb-4">
-              <h4 className="text-lg font-semibold text-white">
-                {tabs.find((tab) => tab.id === analysisResult.type)?.label}
-              </h4>
+              <div className="flex items-center gap-3">
+                <h4 className="text-lg font-semibold text-white">
+                  {tabs.find((tab) => tab.id === analysisResult.type)?.label}
+                </h4>
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    analysisResult.detailed
+                      ? "bg-accent-500/20 text-accent-300 border border-accent-400/30"
+                      : "bg-green-500/20 text-green-300 border border-green-400/30"
+                  }`}
+                >
+                  {analysisResult.detailed ? "مفصل" : "موجز"}
+                </span>
+              </div>
               <span className="text-xs text-white/50">
                 {analysisResult.timestamp}
               </span>
@@ -180,6 +234,18 @@ const GeminiIntegration = ({ projectData, results }) => {
               <div className="text-white/90 leading-relaxed whitespace-pre-wrap">
                 {analysisResult.content}
               </div>
+            </div>
+
+            {/* Re-analyze Button */}
+            <div className="mt-4 pt-4 border-t border-white/10">
+              <button
+                onClick={() => handleGeminiAnalysis(analysisResult.type)}
+                disabled={isAnalyzing}
+                className="flex items-center gap-2 px-4 py-2 bg-accent-500/20 hover:bg-accent-500/30 text-accent-300 rounded-lg text-sm font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Sparkles className="w-4 h-4" />
+                إعادة التحليل مع الوضع {detailedMode ? "المفصل" : "الموجز"}
+              </button>
             </div>
           </motion.div>
         )}
@@ -195,8 +261,10 @@ const GeminiIntegration = ({ projectData, results }) => {
           <p className="text-white/70 mb-4">
             اختر نوع التحليل المطلوب للحصول على تحليل متقدم من الذكاء الاصطناعي
           </p>
-          <div className="text-sm text-white/50">
-            💡 سيتم تحليل بيانات المشروع وتقديم توصيات ذكية مخصصة
+          <div className="text-sm text-white/50 space-y-1">
+            <div>💡 سيتم تحليل بيانات المشروع وتقديم توصيات ذكية مخصصة</div>
+            <div>⚡ الوضع الموجز: تحليل سريع ومركز على النقاط الرئيسية</div>
+            <div>📊 الوضع المفصل: تحليل شامل مع تفاصيل وأمثلة عملية</div>
           </div>
         </div>
       )}

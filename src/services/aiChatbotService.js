@@ -111,7 +111,7 @@ export class AIChatbotService {
       finalAudience,
       finalInvestment
     );
-    const ss = calculateSS(finalProjectType, finalInvestment);
+    const ss = calculateSS(finalProjectType, finalInvestment, finalRegion);
     const demand = calculateWeightedDemand(
       finalRegion,
       finalProjectType,

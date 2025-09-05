@@ -13,11 +13,11 @@ const AnimatedCard = ({
 
   const variants = {
     glass: `
-      bg-white/10 backdrop-blur-xl border border-white/20 
-      hover:bg-white/15 hover:border-white/30
+      bg-gray-900/90 backdrop-blur-xl border border-white/20 
+      hover:bg-gray-900/90/15 hover:border-white/30
     `,
     elevated: `
-      bg-white border border-gray-200 shadow-card
+      bg-gray-900/90 border border-white/20 shadow-card
       hover:shadow-card-hover hover:border-emerald-300
     `,
     gradient: `

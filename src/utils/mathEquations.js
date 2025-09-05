@@ -72,17 +72,22 @@ export const confidenceEquation = {
     { symbol: "f", description: "دالة تركيبية تجمع بين المؤشرين" }
   ]
 };
-
-// Helper function to get equation data
 export const getEquationData = (type) => {
+  const defaultData = {
+    title: "تحليل رياضي",
+    equation: "<div>قيد التحديث...</div>",
+    description: "جاري تحميل البيانات...",
+    variables: []
+  };
+
   switch (type) {
-    case 'iai':
-      return iaiEquation;
-    case 'ss':
-      return ssEquation;
-    case 'confidence':
-      return confidenceEquation;
+    case "iai":
+      return iaiEquation || defaultData;
+    case "ss":
+      return ssEquation || defaultData;
+    case "confidence":
+      return confidenceEquation || defaultData;
     default:
-      return null;
+      return defaultData;
   }
 };

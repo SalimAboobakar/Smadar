@@ -1,0 +1,443 @@
+/* 🌙 Dark Theme Optimization for يدوم */
+
+/* Enhanced Dark Color Palette */
+:root {
+  /* Darker Gray Scale */
+  --gray-50: #0f172a;    /* Very dark background */
+  --gray-100: #1e293b;   /* Dark background */
+  --gray-200: #334155;   /* Medium-dark gray */
+  --gray-300: #475569;   /* Medium gray */
+  --gray-400: #64748b;   /* Light-medium gray */
+  --gray-500: #94a3b8;   /* Light gray */
+  --gray-600: #cbd5e1;   /* Very light gray */
+  --gray-700: #e2e8f0;   /* Near white */
+  --gray-800: #f1f5f9;   /* Very light */
+  --gray-900: #f8fafc;   /* Almost white */
+
+  /* Enhanced Primary Colors */
+  --primary-dark: #0f2419;     /* Very dark green */
+  --primary-darker: #1b4332;   /* Dark green */
+  --primary-medium: #2d6d4f;   /* Medium green */
+  --primary-light: #52a085;    /* Light green */
+  
+  /* Glass Effect Colors */
+  --glass-dark: rgba(15, 23, 42, 0.9);
+  --glass-medium: rgba(30, 41, 59, 0.8);
+  --glass-light: rgba(51, 65, 85, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Dashboard Background */
+.dashboard-dark {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--primary-dark) 25%, var(--gray-100) 50%, var(--primary-dark) 75%, var(--gray-50) 100%);
+  background-size: 400% 400%;
+  animation: darkGradientShift 20s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes darkGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced Navigation */
+.nav-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Tab System */
+.tab-container-dark {
+  background: var(--glass-medium);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.tab-dark {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid transparent;
+}
+
+.tab-dark:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--glass-border);
+}
+
+.tab-dark.active {
+  background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-medium) 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(27, 67, 50, 0.4);
+  border-color: var(--primary-light);
+}
+
+/* Enhanced Card System */
+.card-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-dark:hover::before {
+  opacity: 1;
+}
+
+.card-dark:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced Form Elements */
+.form-dark {
+  background: var(--glass-medium);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  color: white;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.form-dark:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(82, 160, 133, 0.2);
+  background: var(--glass-light);
+}
+
+/* Enhanced Metric Cards */
+.metric-card-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metric-card-dark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(27, 67, 50, 0.1) 0%, 
+    transparent 50%, 
+    rgba(45, 109, 79, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.metric-card-dark:hover::after {
+  opacity: 1;
+}
+
+.metric-card-dark:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--primary-light);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(27, 67, 50, 0.2);
+}
+
+/* Enhanced Button System */
+.btn-dark-primary {
+  background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-medium) 100%);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(27, 67, 50, 0.3);
+}
+
+.btn-dark-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.btn-dark-primary:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(27, 67, 50, 0.4);
+}
+
+.btn-dark-primary:hover::before {
+  left: 100%;
+}
+
+.btn-dark-secondary {
+  background: var(--glass-medium);
+  color: white;
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.btn-dark-secondary:hover {
+  background: var(--glass-light);
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Grid System */
+.grid-dark {
+  display: grid;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.grid-metrics-dark {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.grid-content-dark {
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .grid-content-dark {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Enhanced Typography */
+.text-dark-primary {
+  color: white;
+  font-weight: 600;
+}
+
+.text-dark-secondary {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-dark-muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Chart Container Enhancement */
+.chart-container-dark {
+  background: var(--glass-dark);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+}
+
+/* Loading States */
+.skeleton-dark {
+  background: linear-gradient(
+    90deg,
+    var(--glass-medium) 25%,
+    var(--glass-light) 50%,
+    var(--glass-medium) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerDark 1.5s infinite;
+  border-radius: 1rem;
+}
+
+@keyframes shimmerDark {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .dashboard-dark {
+    padding: 1rem;
+  }
+  
+  .metric-card-dark {
+    padding: 1.5rem;
+    min-height: 160px;
+  }
+  
+  .grid-metrics-dark {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .tab-dark {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .darkGradientShift,
+  .shimmerDark {
+    animation: none;
+  }
+  
+  .card-dark,
+  .metric-card-dark,
+  .btn-dark-primary,
+  .btn-dark-secondary {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card-dark,
+  .metric-card-dark {
+    border: 2px solid white;
+    background: var(--gray-50);
+  }
+  
+  .text-dark-muted {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Force Dark Green Theme for All Cards */
+.metric-card-dark {
+  background: var(--glass-dark) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 1.5rem !important;
+  padding: 2rem !important;
+  text-align: center !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 200px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* Override any white backgrounds */
+.metric-card-dark,
+.metric-card-dark * {
+  background: transparent !important;
+}
+
+.metric-card-dark {
+  background: rgba(15, 23, 42, 0.9) !important;
+}
+
+/* Dark Green Theme for AnimatedCard */
+.animated-card-dark {
+  background: rgba(15, 23, 42, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 1.5rem !important;
+}
+
+/* Override default AnimatedCard styling */
+.animated-card,
+[class*="AnimatedCard"] {
+  background: rgba(15, 23, 42, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+/* Force dark theme on metric values */
+.metric-value {
+  color: white !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.metric-label {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+.metric-trend {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.75rem !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Dark theme for all dashboard components */
+.dashboard-dark * {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dashboard-dark .bg-white {
+  background: rgba(15, 23, 42, 0.9) !important;
+}
+
+.dashboard-dark .text-black {
+  color: white !important;
+}
+
+/* Dark theme for form elements */
+.dashboard-dark select,
+.dashboard-dark input {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+.dashboard-dark option {
+  background: rgba(30, 41, 59, 0.9) !important;
+  color: white !important;
+}
